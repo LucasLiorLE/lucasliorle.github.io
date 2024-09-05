@@ -11,12 +11,12 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #cccccc;
+            background-color: #f0f0f0;
         }
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 10px;
+            padding: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .button-containers {
@@ -25,85 +25,96 @@
         .button {
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 12px 24px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
+            margin: 10px;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+        .button:hover {
+            transform: scale(1.05);
+        }
         footer {
-            background-color: black;
+            background-color: #333;
             color: white;
-            padding: 20px;
+            padding: 15px;
             position: fixed;
             width: 100%;
             bottom: 0;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
         }
-
         #link-btn {
             background-color: #4CAF50;
         }
         #link-btn:hover {
             background-color: #45a049;
         }
-        
         #discord-btn {
             background-color: #5a81d6;
         }
         #discord-btn:hover {
             background-color: #4c5baf;
         }
-
         #youtube-btn {
             background-color: #ff0000;
         }
         #youtube-btn:hover {
             background-color: #ce0000;
         }
-        
+        @media (max-width: 600px) {
+            .button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            footer {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>My work and other random stuff</h1>
+        <h1>My Work and Other Random Stuff</h1>
     </header>
-    <h2>Google forms stuff</h2>
-    <div class="button-containers">
-        <a href="https://google.com" class="button" target="_blank">Mee6 Level Calculator</a>
-        <a href="https://google.com" class="button" target="_blank">SB Slaps Calculator</a>
-        <a href="https://google.com" class="button" target="_blank">Source Code</a>
-    </div>
-    <br>
-    <h2>Discord bots</h2>
-    <h3>Probably a moderation bot I'll make later</h3>
-    <div class="button-containers">
-        <button class="button" id="link-btn">Not coming soon</button>
-        <button class="button" id="link-btn">Source code yeah</button>
-    </div>
-    <h3>Probably a economy bot I'll make later</h3>
-    <div class="button-containers">
-        <button class="button" id="link-btn">Not coming soon</button>
-        <button class="button" id="link-btn">Source code yeah</button>
-    </div>
-    <h2></h2>
-    <br>
-    <h2>Cool Links</h2>
-    <p>Idk probably discord.gg/slapbattles but idk anything for now pls tell me also I need to include the tierlist when I get wifi again</p>
-    <div class="button-containers">
-        <button class="button" id="discord-btn">Join my discord server</button>
-        <button class="button" id="discord-btn">Join SB discord server</button>
-        <br>
-        <button class="button" id="youtube-btn">YT I don't even use anymore</button>
-    </div>
+    <main>
+        <section>
+            <h2>Google Forms Stuff</h2>
+            <div class="button-containers">
+                <a href="https://google.com" class="button" target="_blank">Mee6 Level Calculator</a>
+                <a href="https://google.com" class="button" target="_blank">SB Slaps Calculator</a>
+                <a href="https://google.com" class="button" target="_blank">Source Code</a>
+            </div>
+        </section>
+        <section>
+            <h2>Discord Bots</h2>
+            <h3>Probably a Moderation Bot I'll Make Later</h3>
+            <div class="button-containers">
+                <button class="button" id="link-btn">Not Coming Soon</button>
+                <button class="button" id="link-btn">Source Code</button>
+            </div>
+            <h3>Probably an Economy Bot I'll Make Later</h3>
+            <div class="button-containers">
+                <button class="button" id="link-btn">Not Coming Soon</button>
+                <button class="button" id="link-btn">Source Code</button>
+            </div>
+        </section>
+        <section>
+            <h2>Cool Links</h2>
+            <div class="button-containers">
+                <a href="https://discord.gg/yourserver" class="button" id="discord-btn" target="_blank">Join My Discord Server</a>
+                <a href="https://discord.gg/slapbattles" class="button" id="discord-btn" target="_blank">Join SB Discord Server</a>
+                <a href="https://www.youtube.com/@LucasLiorLE" class="button" id="youtube-btn" target="_blank">YT Channel</a>
+            </div>
+        </section>
+    </main>
     <footer>
         <p>Discord: LucasLiorLE | Roblox: LucasLiorLE</p>
-        <p>I honestly have no idea what to put here but I want something</p>
+        <p>Feel free to reach out for collaborations or just to chat!</p>
     </footer>
 </body>
 </html>
