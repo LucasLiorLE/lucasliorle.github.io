@@ -12,13 +12,19 @@
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
-            padding-bottom: 80px; /* Add padding to account for the info box at the bottom */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #4CAF50;
             color: white;
             padding: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        main {
+            flex: 1;
+            padding-bottom: 80px; 
         }
         .button-containers {
             margin: 20px;
@@ -41,13 +47,10 @@
             transform: scale(1.05);
         }
         .info-box {
-            background-color: #404040; /* Darker gray */
-            color: #e0e0e0; /* Lighter text color for contrast */
+            background-color: #404040; 
+            color: #e0e0e0; 
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            position: absolute; /* Absolute positioning to fill the bottom */
-            bottom: 0;
-            left: 0;
             width: 100%;
             text-align: center;
             font-size: 16px;
