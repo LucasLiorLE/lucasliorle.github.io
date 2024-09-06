@@ -55,10 +55,10 @@
             text-align: center;
             font-size: 16px;
         }
-        #link-btn {
+        #link-btn, #toggle-forms-btn {
             background-color: #4CAF50;
         }
-        #link-btn:hover {
+        #link-btn:hover, #toggle-forms-btn {
             background-color: #45a049;
         }
         #discord-btn {
@@ -82,6 +82,27 @@
                 font-size: 14px;
             }
         }
+        .tooltip {
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+        }
+        .dropdown-content {
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .dropdown-content iframe {
+            width: 49%;
+            height: 800px;
+            border: none;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -89,43 +110,86 @@
         <h1>My Work and Other Random Stuff</h1>
     </header>
     <main>
-        
         <section>
             <h2>Google Forms Stuff</h2>
             <div class="button-containers">
-                <a href="https://forms.gle/TnKRkTu3UJYs42w98" class="button" target="_blank" id="link-btn">Mee6 Level Calculator</a>
-                <a href="https://forms.gle/Arzw1nswBPyK2WsGA" class="button" target="_blank" id="link-btn">SB Slaps Calculator</a>
-                <a href="https://github.com/LucasLiorLE/gforms" class="button" target="_blank" id="link-btn">Source Code</a>
+                <a href="https://forms.gle/TnKRkTu3UJYs42w98" class="button" target="_blank" id="link-btn" data-tooltip="Calculates the amount of time it takes for you to reach a certain level with m336">Mee6 Level Calculator</a>
+                <a href="https://forms.gle/Arzw1nswBPyK2WsGA" class="button" target="_blank" id="link-btn" data-tooltip="Calculate the amount of time it takes for you to get a certain amount of slaps">SB Slaps Calculator</a>
+                <a href="https://github.com/LucasLiorLE/gforms" class="button" target="_blank" id="link-btn" data-tooltip="View the source code for the form stuff">Source Code</a>
+                <button class="button" id="toggle-forms-btn" data-tooltip="Show/Hide Google Forms">Toggle Google Forms</button>
+            </div>
+            <div class="dropdown-content" id="google-forms">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZqJWVVtPQMR4olpgyq7KnR-sJUv65EGKpaPRb_9oogxIrZg/viewform?embedded=true">Loading…</iframe>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdp-7ahz7YpCgIocy52NWfxhtVSIV3DQoAvHHgFlAwZSKWXfw/viewform?embedded=true">Loading…</iframe>
             </div>
         </section>
         <section>
             <h2>Discord Bots</h2>
             <h3>Probably a Moderation Bot I'll Make Later</h3>
             <div class="button-containers">
-                <button class="button" id="link-btn">Not Coming Soon</button>
-                <a href="https://github.com/LucasLiorLE/modbot" class="button" target="_blank" id="link-btn">Source Code</a>
+                <button class="button" id="link-btn" data-tooltip="Not coming soon">Not Coming Soon</button>
+                <a href="https://github.com/LucasLiorLE/modbot" class="button" target="_blank" id="link-btn" data-tooltip="View the source code">Source Code</a>
             </div>
             <h3>Probably an Economy Bot I'll Make Later</h3>
             <div class="button-containers">
-                <button class="button" id="link-btn">Not Coming Soon</button>
-                <a href="https://github.com/LucasLiorLE/ecobot" class="button" target="_blank" id="link-btn">Source Code</a>
+                <button class="button" id="link-btn" data-tooltip="Not coming soon">Not Coming Soon</button>
+                <a href="https://github.com/LucasLiorLE/ecobot" class="button" target="_blank" id="link-btn" data-tooltip="View the source code">Source Code</a>
             </div>
         </section>
         <section>
             <h2>Cool Links</h2>
             <div class="button-containers">
-                <a href="https://discord.gg/yourserver" class="button" id="discord-btn" target="_blank">Join My Discord Server</a>
-                <a href="https://discord.gg/slapbattles" class="button" id="discord-btn" target="_blank">Join SB Discord Server</a>
-                <a href="https://www.youtube.com/@LucasLiorLE" class="button" id="youtube-btn" target="_blank">YT Channel</a>
+                <a href="https://discord.gg/tC3Tqq97" class="button" id="discord-btn" target="_blank" data-tooltip="Join my Discord server">Join My Discord Server</a>
+                <a href="https://www.youtube.com/@LucasLiorLE" class="button" id="youtube-btn" target="_blank" data-tooltip="Visit my YouTube channel (I don't use it anymore but whatever)">YT Channel</a>
+                <a href="https://discord.gg/slapbattles" class="button" id="discord-btn" target="_blank" data-tooltip="Join the Slap Battles Discord server">Join SB Discord Server</a>
+            </div>
+            <div class="button-containers">
+                <a href="https://tiermaker.com/create/scp-chat-members-17451154" class="button" id="youtube-btn" target="_blank" data-tooltip="Tier list for SCP members, dm me to get added (requires 1k messages)">SCP Member Tier List</a>
+                <a href="https://discord.com/invite/JBHgmngdRE" class="button" id="discord-btn" target="_blank" data-tooltip="Join Hazel's Discord server">Hazel's Discord Server</a>
+                <a href="https://docs.google.com/document/d/1fQHoukZK4QdvBW_lhvUKpNaMHuVj0-0nknJFnII-OFQ/edit?usp=sharing" class="button" id="youtube-btn" target="_blank" data-tooltip="View my TODO list">TODO List</a>
             </div>
         </section>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZqJWVVtPQMR4olpgyq7KnR-sJUv65EGKpaPRb_9oogxIrZg/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdp-7ahz7YpCgIocy52NWfxhtVSIV3DQoAvHHgFlAwZSKWXfw/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </main>
     <div class="info-box">
         <p>Discord: LucasLiorLE | Roblox: LucasLiorLE</p>
-        <p>Hi ij ust wanted to pt something here!</p>
+        <p>Hi, I just wanted to put something here!</p>
     </div>
+    <div class="tooltip" id="tooltip"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tooltip = document.getElementById('tooltip');
+            const buttons = document.querySelectorAll('.button');
+            const toggleFormsBtn = document.getElementById('toggle-forms-btn');
+            const googleForms = document.getElementById('google-forms');
+
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', function(event) {
+                    const tooltipText = event.target.getAttribute('data-tooltip');
+                    tooltip.innerText = tooltipText;
+                    tooltip.style.display = 'block';
+                });
+
+                button.addEventListener('mousemove', function(event) {
+                    tooltip.style.left = event.pageX + 10 + 'px';
+                    tooltip.style.top = event.pageY + 10 + 'px';
+                });
+
+                button.addEventListener('mouseout', function() {
+                    tooltip.style.display = 'none';
+                });
+            });
+
+            toggleFormsBtn.addEventListener('click', function() {
+                if (googleForms.style.display === 'block') {
+                    googleForms.style.display = 'none';
+                    googleForms.style.maxHeight = '0';
+                } else {
+                    googleForms.style.display = 'block';
+                    googleForms.style.maxHeight = googleForms.scrollHeight + 'px';
+                }
+            });
+        });
+    
+    </script>
 </body>
 </html>
