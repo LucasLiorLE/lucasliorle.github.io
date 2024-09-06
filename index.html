@@ -11,7 +11,7 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #cccccc;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -28,6 +28,9 @@
         }
         .button-containers {
             margin: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         .button {
             border: none;
@@ -35,48 +38,80 @@
             padding: 12px 24px;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
             font-size: 16px;
             margin: 10px;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: inline-block;
         }
         .button:hover {
             transform: scale(1.05);
+            filter: brightness(90%)
         }
         .info-box {
             background-color: #404040; 
             color: #e0e0e0; 
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            text-align: center;
             font-size: 16px;
         }
-        #link-btn, #toggle-forms-btn {
+        .green-btn {
             background-color: #4CAF50;
         }
-        #link-btn:hover, #toggle-forms-btn {
-            background-color: #45a049;
+        .discord-btn {
+            background-color: #8c9eff;
+            padding: 24px 24px;
         }
-        #discord-btn {
-            background-color: #5a81d6;
+
+        #discord-button-1 {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKimLvQH2juUdXOZmTXqparScTS88GBLJYA&s');
+            background-size: cover; /* Makes sure the image covers the entire button */
+            background-position: center;
+            width: 24px; /* Set the width and height to fit your image */
+            height: 24px;
         }
-        #discord-btn:hover {
-            background-color: #4c5baf;
+
+        #discord-button-2 {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKimLvQH2juUdXOZmTXqparScTS88GBLJYA&s');
+            background-size: cover;
+            background-position: center;
+            width: 24px;
+            height: 24px;
         }
-        #youtube-btn {
+
+
+        .youtube-btn {
             background-color: #ff0000;
+            padding: 24px 24px;
         }
-        #youtube-btn:hover {
-            background-color: #ce0000;
+
+        #youtube-button-1 {
+            background-image: url('https://seeklogo.com/images/Y/youtube-square-logo-3F9D037665-seeklogo.com.png');
+            background-size: cover;
+            background-position: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .nightday-btn {
+            background-color: #444444;
+            padding: 24px 24px;
+        }
+
+        #night-day-button {
+            background-image: url(https://i.imgur.com/v3WBdjD.png);
+            background-size: cover;
+            background-position: center;
+            width: 24px;
+            height: 24px;
         }
         @media (max-width: 600px) {
             .button {
                 padding: 10px 20px;
                 font-size: 14px;
+                width: 90%;
             }
             .info-box {
                 font-size: 14px;
@@ -93,7 +128,7 @@
             z-index: 1000;
         }
         .dropdown-content {
-            display: none;
+            max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-out;
         }
@@ -102,6 +137,10 @@
             height: 800px;
             border: none;
             display: inline-block;
+        }
+        .info-box {
+            justify-content: left;
+            text-align: left;
         }
     </style>
 </head>
@@ -113,46 +152,44 @@
         <section>
             <h2>Google Forms Stuff</h2>
             <div class="button-containers">
-                <a href="https://forms.gle/TnKRkTu3UJYs42w98" class="button" target="_blank" id="link-btn" data-tooltip="Calculates the amount of time it takes for you to reach a certain level with m336">Mee6 Level Calculator</a>
-                <a href="https://forms.gle/Arzw1nswBPyK2WsGA" class="button" target="_blank" id="link-btn" data-tooltip="Calculate the amount of time it takes for you to get a certain amount of slaps">SB Slaps Calculator</a>
-                <a href="https://github.com/LucasLiorLE/gforms" class="button" target="_blank" id="link-btn" data-tooltip="View the source code for the form stuff">Source Code</a>
-                <button class="button" id="toggle-forms-btn" data-tooltip="Show/Hide Google Forms">Toggle Google Forms</button>
+                <a href="https://forms.gle/TnKRkTu3UJYs42w98" class="button green-btn" target="_blank" aria-label="Mee6 Level Calculator" data-tooltip="Calculates the amount of time it takes for you to reach a certain level with m336">Mee6 Level Calculator</a>
+                <a href="https://forms.gle/Arzw1nswBPyK2WsGA" class="button green-btn" target="_blank" aria-label="SB Slaps Calculator" data-tooltip="Calculate the amount of time it takes for you to get a certain amount of slaps">SB Slaps Calculator</a>
+                <a href="https://github.com/LucasLiorLE/gforms" class="button green-btn" target="_blank" aria-label="Source Code" data-tooltip="View the source code for the form stuff">Source Code</a>
             </div>
+            <div class="button-containers"><a class="button green-btn" id="toggle-forms-btn" aria-label="Toggle Google Forms" data-tooltip="Show/Hide Google Forms">Toggle Google Forms</a></div>
             <div class="dropdown-content" id="google-forms">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZqJWVVtPQMR4olpgyq7KnR-sJUv65EGKpaPRb_9oogxIrZg/viewform?embedded=true">Loading…</iframe>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdp-7ahz7YpCgIocy52NWfxhtVSIV3DQoAvHHgFlAwZSKWXfw/viewform?embedded=true">Loading…</iframe>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZqJWVVtPQMR4olpgyq7KnR-sJUv65EGKpaPRb_9oogxIrZg/viewform?embedded=true" alt="Google Form 1">Loading…</iframe>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdp-7ahz7YpCgIocy52NWfxhtVSIV3DQoAvHHgFlAwZSKWXfw/viewform?embedded=true" alt="Google Form 2">Loading…</iframe>
             </div>
         </section>
         <section>
             <h2>Discord Bots</h2>
             <h3>Probably a Moderation Bot I'll Make Later</h3>
             <div class="button-containers">
-                <button class="button" id="link-btn" data-tooltip="Not coming soon">Not Coming Soon</button>
-                <a href="https://github.com/LucasLiorLE/modbot" class="button" target="_blank" id="link-btn" data-tooltip="View the source code">Source Code</a>
+                <button class="button green-btn" aria-label="Not Coming Soon" data-tooltip="Not coming soon">Not Coming Soon</button>
+                <a href="https://github.com/LucasLiorLE/modbot" class="button green-btn" target="_blank" aria-label="Modbot Source Code" data-tooltip="View the source code">Source Code</a>
             </div>
             <h3>Probably an Economy Bot I'll Make Later</h3>
             <div class="button-containers">
-                <button class="button" id="link-btn" data-tooltip="Not coming soon">Not Coming Soon</button>
-                <a href="https://github.com/LucasLiorLE/ecobot" class="button" target="_blank" id="link-btn" data-tooltip="View the source code">Source Code</a>
+                <button class="button green-btn" aria-label="Not Coming Soon" data-tooltip="Not coming soon">Not Coming Soon</button>
+                <a href="https://github.com/LucasLiorLE/ecobot" class="button green-btn" target="_blank" aria-label="Ecobot Source Code" data-tooltip="View the source code">Source Code</a>
             </div>
         </section>
         <section>
-            <h2>Cool Links</h2>
+            <h2>Other Links</h2>
             <div class="button-containers">
-                <a href="https://discord.gg/tC3Tqq97" class="button" id="discord-btn" target="_blank" data-tooltip="Join my Discord server">Join My Discord Server</a>
-                <a href="https://www.youtube.com/@LucasLiorLE" class="button" id="youtube-btn" target="_blank" data-tooltip="Visit my YouTube channel (I don't use it anymore but whatever)">YT Channel</a>
-                <a href="https://discord.gg/slapbattles" class="button" id="discord-btn" target="_blank" data-tooltip="Join the Slap Battles Discord server">Join SB Discord Server</a>
-            </div>
-            <div class="button-containers">
-                <a href="https://tiermaker.com/create/scp-chat-members-17451154" class="button" id="youtube-btn" target="_blank" data-tooltip="Tier list for SCP members, dm me to get added (requires 1k messages)">SCP Member Tier List</a>
-                <a href="https://discord.com/invite/JBHgmngdRE" class="button" id="discord-btn" target="_blank" data-tooltip="Join Hazel's Discord server">Hazel's Discord Server</a>
-                <a href="https://docs.google.com/document/d/1fQHoukZK4QdvBW_lhvUKpNaMHuVj0-0nknJFnII-OFQ/edit?usp=sharing" class="button" id="youtube-btn" target="_blank" data-tooltip="View my TODO list">TODO List</a>
+                <a href="https://discord.gg/slapbattles" class="button green-btn" target="_blank" aria-label="Join SB Discord Server" data-tooltip="Join the Slap Battles Discord server">Join SB Discord Server</a>
+                <a href="https://tiermaker.com/create/scp-chat-members-17451154" class="button green-btn" target="_blank" aria-label="SCP Member Tier List" data-tooltip="Tier list for SCP members, dm me to get added (requires 1k messages)">SCP Member Tier List</a>
+                <a href="https://docs.google.com/document/d/1fQHoukZK4QdvBW_lhvUKpNaMHuVj0-0nknJFnII-OFQ/edit?usp=sharing" class="button green-btn" target="_blank" aria-label="TODO List" data-tooltip="View my TODO list">TODO List</a>
             </div>
         </section>
     </main>
     <div class="info-box">
         <p>Discord: LucasLiorLE | Roblox: LucasLiorLE</p>
-        <p>Hi, I just wanted to put something here!</p>
+        <a id="discord-button-1" href="https://discord.com/invite/JBHgmngdRE" class="button discord-btn" target="_blank" data-tooltip="Join Hazel's Discord server"></a>
+        <a id="discord-button-2" href="https://discord.gg/tC3Tqq97" class="button discord-btn" target="_blank" data-tooltip="Join my Discord server"></a>        
+        <a id="youtube-button-1" href="https://www.youtube.com/@LucasLiorLE" class="button youtube-btn" target="_blank" data-tooltip="Visit my YouTube channel (I don't use it anymore but whatever)"></a>
+        <a id="night-day-button" class="button nightday-btn" data-tooltip="Turn on or off dark mode"></a>
     </div>
     <div class="tooltip" id="tooltip"></div>
     <script>
@@ -180,16 +217,9 @@
             });
 
             toggleFormsBtn.addEventListener('click', function() {
-                if (googleForms.style.display === 'block') {
-                    googleForms.style.display = 'none';
-                    googleForms.style.maxHeight = '0';
-                } else {
-                    googleForms.style.display = 'block';
-                    googleForms.style.maxHeight = googleForms.scrollHeight + 'px';
-                }
+                googleForms.style.maxHeight = googleForms.style.maxHeight === '0px' || googleForms.style.maxHeight === '' ? googleForms.scrollHeight + 'px' : '0px';
             });
         });
-    
     </script>
 </body>
 </html>
