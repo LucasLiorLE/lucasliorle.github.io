@@ -1,11 +1,182 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 <head>
-<title>APEYE Home</title>
-<meta name="description" content="Our first page">
-<meta name="keywords" content="html tutorial template">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEYE Home</title>
+    <style>
+        body {
+            background-color: #36393f;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #7289da;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            flex: 1;
+        }
+
+        .house-button {
+            width: 30px;
+            height: 30px;
+            background-color: #ffffff;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+            top: 5px;
+        }
+
+        .house-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .house-button:hover .roof {
+            border-bottom: 10px solid #e0e0e0;
+        }
+      
+        .roof {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 10px solid #ffffff;
+            position: absolute;
+            top: -8px;
+            left: 0;
+            transition: border-bottom-color 0.3s;
+        }
+
+        .door {
+            width: 12px;
+            height: 15px;
+            background-color: #7289da;
+            position: absolute;
+            bottom: 0;
+            left: 9px;
+            border-radius: 2px;
+            transition: background-color 0.3s;
+        }
+
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #2f3136;
+            border-radius: 8px;
+        }
+
+        a {
+            color: #7289da;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #b9bbbe;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+    </style>
 </head>
+
 <body>
-Content goes here.
+    <header>
+        <h1>APEYE Home</h1>
+        <a class="house-button" id="houseButton" data-tooltip="Go to Home" href="https://lucasliorle.github.io">
+            <div class="roof"></div>
+            <div class="door"></div>
+        </a>
+        <div class="tooltip" id="tooltip"></div>
+    </header>
+    <div class="container">
+        <p>A Discord bot that uses a lot of API stuff, mainly in games. Currently in alpha development.</p>
+        <p>Use these to help you get started:</p>
+        <ul>
+            <li><a href="#" data-tooltip="Learn how to set up the bot (Currently not done)">Getting Started</a></li>
+            <li><a href="#" data-tooltip="See the full list of commands (Currently not done">List of all Commands</a></li>
+            <li><a href="#" data-tooltip="Explore useful commands (currently not done)">Useful Commands</a></li>
+        </ul>
+    </div>
+    <footer>
+        <p>Made by LucasLiorLE</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tooltip = document.getElementById('tooltip');
+            const elementsWithTooltips = document.querySelectorAll('[data-tooltip]');
+
+            function showTooltip(event, text) {
+                tooltip.innerText = text;
+                tooltip.style.display = 'block';
+
+                const rect = event.target.getBoundingClientRect();
+                const tooltipWidth = tooltip.offsetWidth;
+                const tooltipHeight = tooltip.offsetHeight;
+
+                let left = rect.left + window.scrollX + (rect.width / 2) - (tooltipWidth / 2);
+                let top = rect.top + window.scrollY - tooltipHeight - 5;
+
+                const viewportWidth = window.innerWidth;
+
+                if (left < 0) {
+                    left = 5; 
+                    tooltip.style.transform = 'scale(1.2)'; 
+                } else if (left + tooltipWidth > viewportWidth) {
+                    left = viewportWidth - tooltipWidth - 5; 
+                    tooltip.style.transform = 'scale(1.2)';
+                } else {
+                    tooltip.style.transform = 'scale(1)'; 
+                }
+
+                if (top < 0) {
+                    top = rect.bottom + window.scrollY + 5; 
+                }
+
+                tooltip.style.left = `${left}px`;
+                tooltip.style.top = `${top}px`;
+            }
+
+            elementsWithTooltips.forEach(element => {
+                element.addEventListener('mouseover', function(event) {
+                    showTooltip(event, event.target.getAttribute('data-tooltip'));
+                });
+
+                element.addEventListener('mouseout', function() {
+                    tooltip.style.display = 'none';
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
