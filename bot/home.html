@@ -11,7 +11,7 @@
             color: #ffffff;
             font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 20px 30px; /* Increased left/right padding */
         }
 
         header {
@@ -39,6 +39,7 @@
             transition: background-color 0.3s;
             margin-left: 10px;
             top: 5px;
+            text-decoration: none; /* Ensure no underline for anchor */
         }
 
         .house-button:hover {
@@ -74,9 +75,10 @@
 
         .container {
             margin-top: 20px;
-            padding: 20px;
+            padding: 20px; /* Keep existing padding */
             background-color: #2f3136;
             border-radius: 8px;
+            overflow: auto; /* Prevent overflow issues */
         }
 
         a {
@@ -113,8 +115,8 @@
     <header>
         <h1>APEYE Home</h1>
         <a class="house-button" id="houseButton" data-tooltip="Go to Home" href="https://lucasliorle.github.io">
-            <div class="roof"></div>
-            <div class="door"></div>
+            <div class="roof" data-tooltip="Go to Home" ></div>
+            <div class="door" data-tooltip="Go to Home" ></div>
         </a>
         <div class="tooltip" id="tooltip"></div>
     </header>
@@ -122,9 +124,9 @@
         <p>A Discord bot that uses a lot of API stuff, mainly in games. Currently in alpha development.</p>
         <p>Use these to help you get started:</p>
         <ul>
-            <li><a href="#" data-tooltip="Learn how to set up the bot (Currently not done)">Getting Started</a></li>
-            <li><a href="#" data-tooltip="See the full list of commands (Currently not done">List of all Commands</a></li>
-            <li><a href="#" data-tooltip="Explore useful commands (currently not done)">Useful Commands</a></li>
+            <li><a href="#" data-tooltip="Learn how to set up the bot (Coming soon!)">Getting Started</a></li>
+            <li><a href="#" data-tooltip="See the full list of commands (Not coming soon)">List of all Commands</a></li>
+            <li><a href="#" data-tooltip="Explore useful commands (Coming soon!)">Useful Commands</a></li>
         </ul>
     </div>
     <footer>
