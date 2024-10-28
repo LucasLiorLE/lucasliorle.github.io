@@ -11,7 +11,7 @@
             color: #ffffff;
             font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 20px 30px; /* Increased left/right padding */
+            padding: 20px 30px; 
         }
 
         header {
@@ -39,7 +39,7 @@
             transition: background-color 0.3s;
             margin-left: 10px;
             top: 5px;
-            text-decoration: none; /* Ensure no underline for anchor */
+            text-decoration: none; 
         }
 
         .house-button:hover {
@@ -75,10 +75,10 @@
 
         .container {
             margin-top: 20px;
-            padding: 20px; /* Keep existing padding */
+            padding: 20px; 
             background-color: #2f3136;
             border-radius: 8px;
-            overflow: auto; /* Prevent overflow issues */
+            overflow: auto;
         }
 
         a {
@@ -128,6 +128,11 @@
             <li><a href="#" data-tooltip="See the full list of commands (Not coming soon)">List of all Commands</a></li>
             <li><a href="#" data-tooltip="Explore useful commands (Coming soon!)">Useful Commands</a></li>
         </ul>
+        <p>Please also review these before using the bot:</p>
+        <ul>
+            <li><a href="lucasliorle.github.io/bot/terms_of_service.html" data-tooltip="The bot's ToS">Terms of Service</a></li>
+            <li><a href="lucasliorle.github.io/bot/privacy_policy.html" data-tooltip="The bot's Privacy Policy">Privacy Policy</a></li>
+        </ul>
     </div>
     <footer>
         <p>Made by LucasLiorLE</p>
@@ -135,49 +140,26 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const tooltip = document.getElementById('tooltip');
-            const elementsWithTooltips = document.querySelectorAll('[data-tooltip]');
-
-            function showTooltip(event, text) {
-                tooltip.innerText = text;
-                tooltip.style.display = 'block';
-
-                const rect = event.target.getBoundingClientRect();
-                const tooltipWidth = tooltip.offsetWidth;
-                const tooltipHeight = tooltip.offsetHeight;
-
-                let left = rect.left + window.scrollX + (rect.width / 2) - (tooltipWidth / 2);
-                let top = rect.top + window.scrollY - tooltipHeight - 5;
-
-                const viewportWidth = window.innerWidth;
-
-                if (left < 0) {
-                    left = 5; 
-                    tooltip.style.transform = 'scale(1.2)'; 
-                } else if (left + tooltipWidth > viewportWidth) {
-                    left = viewportWidth - tooltipWidth - 5; 
-                    tooltip.style.transform = 'scale(1.2)';
-                } else {
-                    tooltip.style.transform = 'scale(1)'; 
-                }
-
-                if (top < 0) {
-                    top = rect.bottom + window.scrollY + 5; 
-                }
-
-                tooltip.style.left = `${left}px`;
-                tooltip.style.top = `${top}px`;
-            }
-
-            elementsWithTooltips.forEach(element => {
-                element.addEventListener('mouseover', function(event) {
-                    showTooltip(event, event.target.getAttribute('data-tooltip'));
+            const buttons = document.querySelectorAll('.house-button, a[data-tooltip]');
+        
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', function(event) {
+                    const tooltipText = event.target.getAttribute('data-tooltip');
+                    tooltip.innerText = tooltipText;
+                    tooltip.style.display = 'block';
                 });
-
-                element.addEventListener('mouseout', function() {
+        
+                button.addEventListener('mousemove', function(event) {
+                    tooltip.style.left = event.pageX + 10 + 'px';
+                    tooltip.style.top = event.pageY + 10 + 'px';
+                });
+        
+                button.addEventListener('mouseout', function() {
                     tooltip.style.display = 'none';
                 });
             });
         });
+
     </script>
 </body>
 
