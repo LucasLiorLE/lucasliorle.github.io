@@ -4,249 +4,458 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LucasLiorLE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sintony:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: "Sintony", sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #cccccc;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            scrollbar-width: thin; 
-            scrollbar-color: rgba(0, 0, 0, 0.2) transparent; 
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        main {
-            flex: 1;
-            padding-bottom: 80px; 
-        }
-        .button-containers {
-            margin: 20px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .button {
-            border: none;
-            color: white;
-            padding: 12px 24px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: inline-block;
-        }
-        .button:hover {
-            transform: scale(1.05);
-            filter: brightness(90%)
-        }
-        .info-box {
-            background-color: #404040; 
-            color: #e0e0e0; 
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            font-size: 16px;
-        }
-        .green-btn {
-            background-color: #4CAF50;
-        }
-        .discord-btn {
-            background-color: #8c9eff;
-            padding: 24px 24px;
-        }
-
-        #discord-button-1 {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKimLvQH2juUdXOZmTXqparScTS88GBLJYA&s');
-            background-size: cover; 
-            background-position: center;
-            width: 24px; 
-            height: 24px;
-        }
-
-        #discord-button-2 {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKimLvQH2juUdXOZmTXqparScTS88GBLJYA&s');
-            background-size: cover;
-            background-position: center;
-            width: 24px;
-            height: 24px;
-        }
-
-
-        .youtube-btn {
-            background-color: #ff0000;
-            padding: 24px 24px;
-        }
-
-        #youtube-button-1 {
-            background-image: url('https://seeklogo.com/images/Y/youtube-square-logo-3F9D037665-seeklogo.com.png');
-            background-size: cover;
-            background-position: center;
-            width: 24px;
-            height: 24px;
-        }
-
-        .nightday-btn {
-            background-color: #404040;
-            padding: 24px 24px;
-            box-shadow: 0 0 0 0;
-        }
-
-        @media (max-width: 600px) {
-            .button {
-                padding: 10px 20px;
-                font-size: 14px;
-                width: 90%;
-            }
-            .info-box {
-                font-size: 14px;
-            }
-        }
-        @media (max-width: 600px) {
-            .button {
-                padding: 10px 20px;
-                font-size: 14px;
-                width: 90%;
-            }
-            .info-box {
-                font-size: 14px;
-            }
-        }
-        .tooltip {
-            position: absolute;
-            background-color: #333;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: none;
-            z-index: 1000;
-        }
-        .dropdown-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out;
-        }
-        .dropdown-content iframe {
-            width: 49%;
-            height: 800px;
-            border: none;
-            display: inline-block;
-        }
-        .info-box {
-            justify-content: left;
-            text-align: left;
-        }
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent; 
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: rgba(0, 0, 0, 0.2); 
-            border-radius: 6px;
-            border: 3px solid transparent; 
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(0, 0, 0, 0.3); 
-        }
-    </style>
 </head>
+<style>
+    body {
+        font-family: "Sintony", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #2e8b57, #3a6351, #153d26);
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        color: white;
+        padding: 15px;
+        padding-left: 20%;
+        padding-right: 20%;
+        margin: 15px;
+        width: fit-content;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 200%;
+    }
+
+    .about-me {
+        align-items: center;
+    }
+
+    p {
+        margin: 5px;
+        text-align: center;
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+
+    @media (max-width: 768px) {
+        p {
+            padding-left: 0%;
+            padding-right: 0%;
+        }
+        
+    }
+
+    main {
+        width: 100%;
+        flex: 1;
+        padding-bottom: 80px; 
+    }
+
+    .main-countdown {
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* TODO: Find out how to do this smoothly */
+    .countdown {
+        font-size: 1.5rem;
+        background: rgba(255, 0, 0, 0.8);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: inline-block;
+        transition: transform 0.3s ease-out;
+    }
+
+    .countdown:hover {
+        transform: scale(1.01);
+    }
+
+    .button-containers {
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .button {
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        display: inline-block;
+    }
+
+    .button:hover {
+        transform: scale(1.05);
+        filter: brightness(90%)
+    }
+
+    .button-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .button-container button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background: #3aafa9;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .button-container button:hover {
+        background: #2b7a78;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 20px;
+        font-size: 1rem;
+        opacity: 0.8;
+    }
+    .click-btn {
+        background: rgba(0, 0, 0, 0.2);
+        
+    }
+    .tooltip {
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        display: none;
+        z-index: 1000;
+    }
+    .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+    }
+    .dropdown-content iframe {
+        width: 49%;
+        height: 800px;
+        border: none;
+        display: inline-block;
+    }
+
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent; 
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2); 
+        border-radius: 6px;
+        border: 3px solid transparent; 
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.3); 
+    }
+
+
+    @media (max-width: 768px) {
+        #google-forms {
+        display: flex;
+        flex-direction: column;
+        }
+    
+        #google-forms iframe {
+        width: 100%;
+        min-height: 800px;
+        margin-top: 25px;
+
+        }
+    }
+
+    @keyframes snowflakeFall {
+        0% {
+            transform: translateY(-100px) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .snowflake {
+        position: absolute;
+        top: -10px;
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        animation: snowflakeFall linear infinite;
+        z-index: 1;
+    }
+
+    .snowflake::before, .snowflake::after {
+        content: '';
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+
+    .snowflake::before {
+        width: 2px;
+        height: 15px;
+        top: 50%;
+        left: 50%;
+        margin-top: -7px;
+        margin-left: -1px;
+        transform: rotate(45deg);
+    }
+
+    .snowflake::after {
+        width: 2px;
+        height: 15px;
+        top: 50%;
+        left: 50%;
+        margin-top: -7px;
+        margin-left: -1px;
+        transform: rotate(-45deg);
+    }
+</style>
 <body>
     <header>
-        <h1>My Work and Other Random Stuff</h1>
+        <h1>My work and other stuff</h1>
     </header>
+
+    <div class="main-countdown">
+        <h1 id="main-title">🎄 Countdown to Christmas 🎅</h1>
+        <div class="countdown" id="countdown"></div>
+    </div>
+
     <main>
+        <section class="about-me">
+            <h2>About me</h2>
+            <p>Hi, I go by Lucas (Or as most people call me). INTP-A, GMT-7 (Pacific Standard Time, PST). 
+                I am really shy and introverted irl, so that even if you talked to me first, I most likely would talk back. 
+                I prefer to work alone a lot, I'm probably really mentally unstable, scared, and nervous, although I am really good at hiding it.
+                I try to act different online, make stuff, do stuff the real me can't irl, the one that cannot form a word.
+                I enjoy reading and coding during my free time. Some of my old friends didn't believe I like to read. 
+            </p>
+            <p>I mainly use: Ruby, Python, JavaScript, C++, C#, C, Lua, Roblox Lua (Or as I call, Luau), HTML, CSS, and Java. </p>
+            <p>More hobbies: drawing, running, and laying in bed the entire day thinking about how I can spend my time so much better.<p>
+            <p>Cool things: I can use both hands equally well, I'm very logical, I might seem serious at times, but I'm most likely not...</p>
+        </section>
         <section>
             <h2>Google Forms Stuff</h2>
             <div class="button-containers">
-                <a href="https://forms.gle/TnKRkTu3UJYs42w98" class="button green-btn" target="_blank" aria-label="Mee6 Level Calculator" data-tooltip="Calculates the amount of time it takes for you to reach a certain level with m336">Mee6 Level Calculator</a>
-                <a href="https://forms.gle/Arzw1nswBPyK2WsGA" class="button green-btn" target="_blank" aria-label="SB Slaps Calculator" data-tooltip="Calculate the amount of time it takes for you to get a certain amount of slaps">SB Slaps Calculator</a>
-                <a href="https://github.com/LucasLiorLE/gforms" class="button green-btn" target="_blank" aria-label="Source Code" data-tooltip="View the source code for the form stuff">Source Code</a>
+                <a href="https://forms.gle/TnKRkTu3UJYs42w98" class="button click-btn" target="_blank" aria-label="Mee6 Level Calculator" data-tooltip="Calculates the amount of time it takes for you to reach a certain level with mee6">Mee6 Level Calculator</a>
+                <a href="https://forms.gle/Arzw1nswBPyK2WsGA" class="button click-btn" target="_blank" aria-label="SB Slaps Calculator" data-tooltip="Calculate the amount of time it takes for you to get a certain amount of slaps">SB Slaps Calculator</a>
+                <a href="https://github.com/LucasLiorLE/gforms" class="button click-btn" target="_blank" aria-label="Source Code" data-tooltip="View the source code for the form stuff">Source Code</a>
             </div>
-            <div class="button-containers"><a class="button green-btn" id="toggle-forms-btn" aria-label="Toggle Google Forms" data-tooltip="Show/Hide Google Forms">Toggle Google Forms</a></div>
+            <div class="button-containers"><a class="button click-btn" id="toggle-forms-btn" aria-label="Toggle Google Forms" data-tooltip="Show/Hide Google Forms">Toggle Google Forms</a></div>
             <div class="dropdown-content" id="google-forms">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZqJWVVtPQMR4olpgyq7KnR-sJUv65EGKpaPRb_9oogxIrZg/viewform?embedded=true" alt="Google Form 1">Loading…</iframe>
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdp-7ahz7YpCgIocy52NWfxhtVSIV3DQoAvHHgFlAwZSKWXfw/viewform?embedded=true" alt="Google Form 2">Loading…</iframe>
             </div>
         </section>
         <section>
-            <h2>Discord Bots</h2>
-            <h3>Main Discord Bot (Still in alpha development)</h3>
+            <h2>Discord Bot (v1.1.25)</h2>
             <div class="button-containers">
-                <a href="https://lucasliorle.github.io/bot/home.html" class="button green-btn" aria-label="Documentation" data-tooltip="What the bot's about">Documentation</a>
-                <a href="https://github.com/LucasLiorLE/APEYE" class="button green-btn" target="_blank" aria-label="APEYE Source Code" data-tooltip="View the source code">Source Code</a>
-            </div>
-            <h3>Probably a Moderation Bot I'll Make Later</h3>
-            <div class="button-containers">
-                <button class="button green-btn" aria-label="Not Coming Soon" data-tooltip="Not coming soon">Not Coming Soon</button>
-                <a href="https://github.com/LucasLiorLE/modbot" class="button green-btn" target="_blank" aria-label="Modbot Source Code" data-tooltip="View the source code">Source Code</a>
-            </div>
-            <h3>Probably an Economy Bot I'll Make Later</h3>
-            <div class="button-containers">
-                <button class="button green-btn" aria-label="Not Coming Soon" data-tooltip="Not coming soon">Not Coming Soon</button>
-                <a href="https://github.com/LucasLiorLE/ecobot" class="button green-btn" target="_blank" aria-label="Ecobot Source Code" data-tooltip="View the source code">Source Code</a>
-            </div>
-        </section>
-        <section>
-            <h2>Other Links</h2>
-            <div class="button-containers">
-                <a href="https://discord.gg/slapbattles" class="button green-btn" target="_blank" aria-label="Join SB Discord Server" data-tooltip="Join the Slap Battles Discord server">Join SB Discord Server</a>
-                <a href="https://tiermaker.com/create/scp-chat-members-17451154" class="button green-btn" target="_blank" aria-label="SCP Member Tier List" data-tooltip="Tier list for SCP members, dm me to get added (requires 1k messages)">SCP Member Tier List</a>
-                <a href="https://docs.google.com/document/d/1fQHoukZK4QdvBW_lhvUKpNaMHuVj0-0nknJFnII-OFQ/edit?usp=sharing" class="button green-btn" target="_blank" aria-label="TODO List" data-tooltip="View my TODO list">TODO List</a>
+                <a href="https://discord.com/oauth2/authorize?client_id=733021769073557604" class="button click-btn" aria-label="Install bot" data-tooltip="Install the bot to a server or to yourself! ">Install bot</a>
+                <a href="unzip me.zip" class="button click-btn" aria-label="Download bot" data-tooltip="Download the bot so you can host/edit it yourself." download>Download bot</a>
             </div>
         </section>
     </main>
-    <div class="info-box">
-        <p>Discord: LucasLiorLE | Roblox: LucasLiorLE</p>
-        <a id="discord-button-1" href="https://discord.com/invite/JBHgmngdRE" class="button discord-btn" target="_blank" data-tooltip="Join Hazel's Discord server"></a>
-        <a id="discord-button-2" href="https://discord.gg/tC3Tqq97" class="button discord-btn" target="_blank" data-tooltip="Join my Discord server"></a>        
-        <a id="youtube-button-1" href="https://www.youtube.com/@LucasLiorLE" class="button youtube-btn" target="_blank" data-tooltip="Visit my YouTube channel (I don't use it anymore but whatever)"></a>
-    </div>
+   
+    <div class="button-container">
+        <a href="https://www.buymeacoffee.com/LucasLiorLE">
+            <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=LucasLiorLE&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
+        </a>
+    </div>  
+    <br>
     <div class="tooltip" id="tooltip"></div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tooltip = document.getElementById('tooltip');
-            const buttons = document.querySelectorAll('.button');
-            const toggleFormsBtn = document.getElementById('toggle-forms-btn');
-            const googleForms = document.getElementById('google-forms');
+</body>
+<script>
 
-            buttons.forEach(button => {
-                button.addEventListener('mouseover', function(event) {
-                    const tooltipText = event.target.getAttribute('data-tooltip');
-                    tooltip.innerText = tooltipText;
-                    tooltip.style.display = 'block';
-                });
+    document.addEventListener('DOMContentLoaded', function() {
+        const tooltip = document.getElementById('tooltip');
+        const buttons = document.querySelectorAll('.button');
+        const toggleFormsBtn = document.getElementById('toggle-forms-btn');
+        const googleForms = document.getElementById('google-forms');
+        const countdownElement = document.getElementById('countdown');
+        const stickyCountdownElement = document.getElementById('sticky-countdown');
 
-                button.addEventListener('mousemove', function(event) {
-                    tooltip.style.left = event.pageX + 10 + 'px';
-                    tooltip.style.top = event.pageY + 10 + 'px';
-                });
-
-                button.addEventListener('mouseout', function() {
-                    tooltip.style.display = 'none';
-                });
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', function(event) {
+                const tooltipText = event.target.getAttribute('data-tooltip');
+                tooltip.innerText = tooltipText;
+                tooltip.style.display = 'block';
             });
 
-            toggleFormsBtn.addEventListener('click', function() {
-                googleForms.style.maxHeight = googleForms.style.maxHeight === '0px' || googleForms.style.maxHeight === '' ? googleForms.scrollHeight + 'px' : '0px';
+            button.addEventListener('mousemove', function(event) {
+                tooltip.style.left = event.pageX + 10 + 'px';
+                tooltip.style.top = event.pageY + 10 + 'px';
+            });
+
+            button.addEventListener('mouseout', function() {
+                tooltip.style.display = 'none';
             });
         });
-    </script>
-</body>
+
+        toggleFormsBtn.addEventListener('click', function() {
+            googleForms.style.maxHeight = googleForms.style.maxHeight === '0px' || googleForms.style.maxHeight === '' 
+                ? googleForms.scrollHeight + 'px' 
+                : '0px';
+        });
+
+        function updateCountdown() {
+            const christmas = new Date('December 25, ' + new Date().getFullYear() + ' 00:00:00');
+            const now = new Date();
+            const diff = christmas - now;
+
+            if (!countdownElement) return;
+            if (diff <= 0) {
+                countdownElement.innerText = "🎁 Merry Christmas! 🎄";
+                if (stickyCountdownElement) stickyCountdownElement.innerText = "🎁 Merry Christmas! 🎄";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const timeString = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+
+            countdownElement.innerText = timeString;
+            if (stickyCountdownElement) stickyCountdownElement.innerText = timeString;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    });
+    
+    const element = document.querySelector('#countdown');
+    function getRandomChristmasColor() {
+        const colors = ['#FF0000', '#00FF00', '#FFD700', '#8B0000', '#228B22'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function generateChristmasRandomGradient() {
+        const color1 = getRandomChristmasColor();
+        const color2 = getRandomChristmasColor();
+        const color3 = getRandomChristmasColor();
+        
+        return {
+            background: `linear-gradient(90deg, ${color1} 0%, ${color2} 25%, ${color3} 50%, ${color1} 75%, ${color2} 100%)`,
+            backgroundSize: '400% 100%',
+            animation: 'gradientAnimation 10s linear infinite'
+        };
+    }
+
+    const styles = generateChristmasRandomGradient();
+
+    Object.assign(element.style, styles);
+
+    const animationStyles = `
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 100% 0%;
+        }
+    }
+    `;
+
+    const styleElement = document.createElement('style');
+    styleElement.textContent = animationStyles;
+    document.head.appendChild(styleElement);
+
+    function getRandomValue(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    function createSnowflakes(numFlakes) {
+        const body = document.body;
+
+        for (let i = 0; i < numFlakes; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            
+            const size = getRandomValue(5, 15);
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            
+            snowflake.style.left = `${getRandomValue(0, window.innerWidth)}px`;
+            
+            snowflake.style.animationDuration = `${getRandomValue(5, 15)}s`;
+            snowflake.style.animationDelay = `${getRandomValue(0, 5)}s`;
+            
+            body.appendChild(snowflake);
+        }
+    }
+
+    createSnowflakes(100);
+    // Too lazy to make
+
+    /*        
+    function handleScroll() {
+        const countdownElement = document.getElementById('countdown');
+        const mainTitleElement = document.getElementById('main-title');
+        const stickyHeader = document.getElementById('sticky-header');
+
+        const countdownTop = countdownElement.getBoundingClientRect().top;
+
+        if (countdownTop < 0) {
+            stickyHeader.style.display = 'block'; 
+            stickyHeader.style.opacity = '1'; 
+            stickyHeader.style.background = 'rgba(0, 0, 0, 0.8)';
+        } else {
+            stickyHeader.style.opacity = '0'; 
+            stickyHeader.style.background = 'rgba(0, 0, 0, 0)'; 
+            background.scrollHeight = '120vh';
+        }
+
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const maxScroll = countdownElement.offsetTop;
+
+        if (scrollTop < maxScroll) {
+            const movementAmount = Math.min(scrollTop, maxScroll) * 0.5; // Adjust speed with multiplier
+            countdownElement.style.transform = `translateY(-${movementAmount}px)`; 
+            mainTitleElement.style.transform = `translateY(-${movementAmount}px)`;
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(handleScroll);
+    });
+    */
+</script>
 </html>
