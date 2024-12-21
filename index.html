@@ -66,10 +66,8 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
 
-    /* TODO: Find out how to do this smoothly */
     .countdown {
         font-size: 1.5rem;
-        background: rgba(255, 0, 0, 0.8);
         padding: 10px;
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -87,6 +85,7 @@
         justify-content: center;
         flex-wrap: wrap;
     }
+
     .button {
         border: none;
         color: white;
@@ -135,10 +134,12 @@
         font-size: 1rem;
         opacity: 0.8;
     }
+
     .click-btn {
         background: rgba(0, 0, 0, 0.2);
         
     }
+
     .tooltip {
         position: absolute;
         background-color: #333;
@@ -149,11 +150,13 @@
         display: none;
         z-index: 1000;
     }
+
     .dropdown-content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease-out;
     }
+
     .dropdown-content iframe {
         width: 49%;
         height: 800px;
@@ -179,7 +182,6 @@
     ::-webkit-scrollbar-thumb:hover {
         background-color: rgba(0, 0, 0, 0.3); 
     }
-
 
     @media (max-width: 768px) {
         #google-forms {
@@ -413,7 +415,8 @@
             snowflake.style.width = `${size}px`;
             snowflake.style.height = `${size}px`;
             
-            snowflake.style.left = `${getRandomValue(0, window.innerWidth)}px`;
+            const maxLeftPosition = window.innerWidth * 0.95;
+            snowflake.style.left = `${getRandomValue(0, maxLeftPosition)}px`;
             
             snowflake.style.animationDuration = `${getRandomValue(5, 15)}s`;
             snowflake.style.animationDelay = `${getRandomValue(0, 5)}s`;
@@ -421,6 +424,7 @@
             body.appendChild(snowflake);
         }
     }
+
 
     createSnowflakes(100);
     // Too lazy to make
