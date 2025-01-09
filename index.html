@@ -29,12 +29,36 @@
         font-family: "Sintony", sans-serif;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom, #2e8b57, #3a6351, #153d26);
+        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
         color: white;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: hidden;
+        min-height: 100vh;
+    }
+
+    .star {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        animation: sparkle 5s infinite ease-in-out;
+    }
+
+    @keyframes sparkle {
+        0%, 100% {
+            opacity: 0.5;
+        }
+        50% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 0.3;
+        }
     }
 
     header {
@@ -215,8 +239,7 @@
 
         }
     }
-
-    @keyframes snowflakeFall {
+    @keyframes itemFall {
         0% {
             transform: translateY(-100px) rotate(0deg);
             opacity: 1;
@@ -236,11 +259,12 @@
         border-radius: 50%;
         opacity: 0.8;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        animation: snowflakeFall linear infinite;
+        animation: itemFall linear infinite;
         z-index: 1;
     }
 
-    .snowflake::before, .snowflake::after {
+    .snowflake::before,
+    .snowflake::after {
         content: '';
         position: absolute;
         background-color: white;
@@ -268,14 +292,47 @@
         margin-left: -1px;
         transform: rotate(-45deg);
     }
+
+    .heart {
+        position: absolute;
+        top: -10px;
+        background-color: red;
+        width: 20px;
+        height: 20px;
+        transform: rotate(-45deg);
+        border-radius: 50% 50% 0 0;
+        z-index: 1;
+        animation: itemFall linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -50%;
+        left: 0;
+    }
+
+    .heart::after {
+        top: 0;
+        left: 50%;
+    }
 </style>
+
 <body>
     <header>
         <h1>My work and other stuff</h1>
     </header>
 
     <div class="main-countdown">
-        <h1 id="main-title">🎄 Countdown to Christmas 🎅</h1>
+        <h1 id="main-title"></h1>
         <div class="countdown" id="countdown"></div>
     </div>
 
@@ -314,22 +371,127 @@
         </section>
     </main>
    
-    <div class="button-container">
-        <a href="https://www.buymeacoffee.com/LucasLiorLE">
-            <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=LucasLiorLE&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
-        </a>
-    </div>  
     <br>
     <div class="tooltip" id="tooltip"></div>
 </body>
 <script>
+    // Create effects
+    function getRandomValue(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    function createItem(amount, item) {
+        console.log(`Creating ${amount} ${item}(s)`); // Debug log
+        // Remove any existing items of this type to prevent accumulation
+        const existingItems = document.querySelectorAll('.' + item);
+        console.log(`Removing ${existingItems.length} existing ${item}(s)`); // Debug log
+        existingItems.forEach(el => el.remove());
+
+        const body = document.body;
+        
+        for (let i = 0; i < amount; i++) {
+            const element = document.createElement('div');
+            element.classList.add(item);
+            
+            // Set base styles
+            const size = getRandomValue(5, 15);
+            element.style.position = 'fixed'; // Changed from absolute to fixed
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            
+            // Set random starting position
+            const maxLeftPosition = window.innerWidth - size;
+            element.style.left = `${getRandomValue(0, maxLeftPosition)}px`;
+            element.style.top = `${getRandomValue(-window.innerHeight, -size)}px`; // Start above viewport at random position
+            
+            // Set animation
+            element.style.animation = `itemFall ${getRandomValue(5, 15)}s linear ${getRandomValue(0, 5)}s infinite`;
+            
+            if (item === 'snowflake') {
+                element.style.backgroundColor = 'white';
+                element.style.borderRadius = '50%';
+                element.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.7)';
+                
+                // Create cross shape
+                const beforeAfterStyle = `
+                    content: '';
+                    position: absolute;
+                    width: 2px;
+                    height: 15px;
+                    background: white;
+                    top: 50%;
+                    left: 50%;
+                    transform-origin: center;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    .snowflake::before {
+                        ${beforeAfterStyle}
+                        transform: translate(-50%, -50%) rotate(45deg);
+                    }
+                    .snowflake::after {
+                        ${beforeAfterStyle}
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                    }
+                `;
+                document.head.appendChild(style);
+            } else if (item === 'heart') {
+                element.style.backgroundColor = 'red';
+                element.style.transform = 'rotate(-45deg)';
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    .heart::before,
+                    .heart::after {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: red;
+                        border-radius: 50%;
+                    }
+                    .heart::before {
+                        top: -50%;
+                        left: 0;
+                    }
+                    .heart::after {
+                        top: 0;
+                        left: 50%;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            body.appendChild(element);
+            console.log(`Appended ${item} to body`); // Debug log
+        }
+    }
+
+    // Make sure the itemFall animation is properly defined
+    const fallAnimation = document.createElement('style');
+    fallAnimation.textContent = `
+        @keyframes itemFall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(${window.innerHeight + 10}px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(fallAnimation);
 
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded and parsed'); // Debug log
         const tooltip = document.getElementById('tooltip');
         const buttons = document.querySelectorAll('.button');
         const toggleFormsBtn = document.getElementById('toggle-forms-btn');
         const googleForms = document.getElementById('google-forms');
         const countdownElement = document.getElementById('countdown');
+        const countdownTitle = document.getElementById('main-title');
         const stickyCountdownElement = document.getElementById('sticky-countdown');
 
         buttons.forEach(button => {
@@ -356,14 +518,65 @@
         });
 
         function updateCountdown() {
-            const christmas = new Date('December 25, ' + new Date().getFullYear() + ' 00:00:00');
+            console.log('Updating countdown'); // Debug log
+            const holidays = [
+                { 
+                    name: "Christmas", 
+                    date: "December 25", 
+                    animation: () => createItem(100, 'snowflake'),
+                    emoji: "🎄🎅"
+                },
+                { 
+                    name: "New Year's Day", 
+                    date: "January 1", 
+                    animation: () => {},
+                    emoji: "🎇🧨"
+                },
+                { 
+                    name: "Valentine's Day", 
+                    date: "February 14", 
+                    animation: () => createItem(50, 'heart'),
+                    emoji: "❤️💘"
+                },
+                { 
+                    name: "Halloween", 
+                    date: "October 31", 
+                    animation: () => {},
+                    emoji: "🎃👻"
+                }
+            ];
+
             const now = new Date();
-            const diff = christmas - now;
+            let nextHoliday = null;
+            let nextHolidayDate = null;
+
+            for (const holiday of holidays) {
+                let holidayDate = new Date(holiday.date + ', ' + now.getFullYear());
+
+                if (holidayDate < now) {
+                    holidayDate.setFullYear(now.getFullYear() + 1);
+                }
+
+                if (!nextHolidayDate || holidayDate < nextHolidayDate) {
+                    nextHoliday = holiday;
+                    nextHolidayDate = holidayDate;
+                }
+            }
+
+            const diff = nextHolidayDate - now;
 
             if (!countdownElement) return;
+            console.log(`Next holiday: ${nextHoliday.name} on ${nextHolidayDate}`); // Debug log
             if (diff <= 0) {
-                countdownElement.innerText = "🎁 Merry Christmas! 🎄";
-                if (stickyCountdownElement) stickyCountdownElement.innerText = "🎁 Merry Christmas! 🎄";
+                countdownElement.innerText = `Happy ${nextHoliday.name}!`;
+                if (stickyCountdownElement) stickyCountdownElement.innerText = `Happy ${nextHoliday.name}!`;
+                countdownTitle.innerText = `${nextHoliday.emoji} Countdown to ${nextHoliday.name} ${nextHoliday.emoji}`;
+
+                if (nextHoliday.animation) {
+                    console.log(`Running animation for ${nextHoliday.name}`); // Debug log
+                    nextHoliday.animation();
+                }
+
                 return;
             }
 
@@ -376,33 +589,15 @@
 
             countdownElement.innerText = timeString;
             if (stickyCountdownElement) stickyCountdownElement.innerText = timeString;
+            countdownTitle.innerText = `${nextHoliday.emoji} Countdown to ${nextHoliday.name} ${nextHoliday.emoji}`;
         }
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // Test createItem function directly after DOM is loaded
+        createItem(50, 'heart'); // Test with hearts
     });
-    
-    const element = document.querySelector('#countdown');
-    function getRandomChristmasColor() {
-        const colors = ['#FF0000', '#00FF00', '#FFD700', '#8B0000', '#228B22'];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    function generateChristmasRandomGradient() {
-        const color1 = getRandomChristmasColor();
-        const color2 = getRandomChristmasColor();
-        const color3 = getRandomChristmasColor();
-        
-        return {
-            background: `linear-gradient(90deg, ${color1} 0%, ${color2} 25%, ${color3} 50%, ${color1} 75%, ${color2} 100%)`,
-            backgroundSize: '400% 100%',
-            animation: 'gradientAnimation 10s linear infinite'
-        };
-    }
-
-    const styles = generateChristmasRandomGradient();
-
-    Object.assign(element.style, styles);
 
     const animationStyles = `
     @keyframes gradientAnimation {
@@ -419,66 +614,25 @@
     styleElement.textContent = animationStyles;
     document.head.appendChild(styleElement);
 
-    function getRandomValue(min, max) {
-        return Math.random() * (max - min) + min;
-    }
+    function createStars(numberOfStars) {
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
 
-    function createSnowflakes(numFlakes) {
-        const body = document.body;
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
 
-        for (let i = 0; i < numFlakes; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            
-            const size = getRandomValue(5, 15);
-            snowflake.style.width = `${size}px`;
-            snowflake.style.height = `${size}px`;
-            
-            const maxLeftPosition = window.innerWidth * 0.95;
-            snowflake.style.left = `${getRandomValue(0, maxLeftPosition)}px`;
-            
-            snowflake.style.animationDuration = `${getRandomValue(5, 15)}s`;
-            snowflake.style.animationDelay = `${getRandomValue(0, 5)}s`;
-            
-            body.appendChild(snowflake);
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+
+            star.style.animationDuration = `${Math.random() * 4 + 2}s`;
+            star.style.animationDelay = `${Math.random() * 5}s`;
+
+            document.body.appendChild(star);
         }
     }
 
-
-    createSnowflakes(100);
-    // Too lazy to make
-
-    /*        
-    function handleScroll() {
-        const countdownElement = document.getElementById('countdown');
-        const mainTitleElement = document.getElementById('main-title');
-        const stickyHeader = document.getElementById('sticky-header');
-
-        const countdownTop = countdownElement.getBoundingClientRect().top;
-
-        if (countdownTop < 0) {
-            stickyHeader.style.display = 'block'; 
-            stickyHeader.style.opacity = '1'; 
-            stickyHeader.style.background = 'rgba(0, 0, 0, 0.8)';
-        } else {
-            stickyHeader.style.opacity = '0'; 
-            stickyHeader.style.background = 'rgba(0, 0, 0, 0)'; 
-            background.scrollHeight = '120vh';
-        }
-
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const maxScroll = countdownElement.offsetTop;
-
-        if (scrollTop < maxScroll) {
-            const movementAmount = Math.min(scrollTop, maxScroll) * 0.5; // Adjust speed with multiplier
-            countdownElement.style.transform = `translateY(-${movementAmount}px)`; 
-            mainTitleElement.style.transform = `translateY(-${movementAmount}px)`;
-        }
-    }
-
-    window.addEventListener('scroll', () => {
-        window.requestAnimationFrame(handleScroll);
-    });
-    */
+    createStars(250);
 </script>
 </html>
