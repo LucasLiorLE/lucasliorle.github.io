@@ -35,7 +35,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        overflow: hidden;
+        overflow-x: hidden;
         min-height: 100vh;
     }
 
@@ -60,6 +60,7 @@
             opacity: 0.3;
         }
     }
+
 
     header {
         background: rgba(0, 0, 0, 0.3);
@@ -369,6 +370,12 @@
                 <a href="unzip me.zip" class="button click-btn" aria-label="Download bot" data-tooltip="Download the bot so you can host/edit it yourself." download>Download bot</a>
             </div>
         </section>
+        <section>
+            <h2>School stuff</h2>
+            <div class="button-containers">
+                <a href="https://github.com/LucasLiorLE/bim" class="button click-btn" aria-label="School extension hanger" data-tooltip="Hangs an extension that blocks sites and other stuff.">Extension Hanger</a>
+            </div>
+        </section>
     </main>
    
     <br>
@@ -381,10 +388,7 @@
     }
 
     function createItem(amount, item) {
-        console.log(`Creating ${amount} ${item}(s)`); // Debug log
-        // Remove any existing items of this type to prevent accumulation
         const existingItems = document.querySelectorAll('.' + item);
-        console.log(`Removing ${existingItems.length} existing ${item}(s)`); // Debug log
         existingItems.forEach(el => el.remove());
 
         const body = document.body;
@@ -393,18 +397,15 @@
             const element = document.createElement('div');
             element.classList.add(item);
             
-            // Set base styles
             const size = getRandomValue(5, 15);
-            element.style.position = 'fixed'; // Changed from absolute to fixed
+            element.style.position = 'fixed';
             element.style.width = `${size}px`;
             element.style.height = `${size}px`;
             
-            // Set random starting position
             const maxLeftPosition = window.innerWidth - size;
             element.style.left = `${getRandomValue(0, maxLeftPosition)}px`;
-            element.style.top = `${getRandomValue(-window.innerHeight, -size)}px`; // Start above viewport at random position
+            element.style.top = `${getRandomValue(-window.innerHeight, -size)}px`; 
             
-            // Set animation
             element.style.animation = `itemFall ${getRandomValue(5, 15)}s linear ${getRandomValue(0, 5)}s infinite`;
             
             if (item === 'snowflake') {
@@ -412,7 +413,6 @@
                 element.style.borderRadius = '50%';
                 element.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.7)';
                 
-                // Create cross shape
                 const beforeAfterStyle = `
                     content: '';
                     position: absolute;
@@ -429,7 +429,7 @@
                     .snowflake::before {
                         ${beforeAfterStyle}
                         transform: translate(-50%, -50%) rotate(45deg);
-                    }
+                    }   
                     .snowflake::after {
                         ${beforeAfterStyle}
                         transform: translate(-50%, -50%) rotate(-45deg);
@@ -464,11 +464,9 @@
             }
             
             body.appendChild(element);
-            console.log(`Appended ${item} to body`); // Debug log
         }
     }
 
-    // Make sure the itemFall animation is properly defined
     const fallAnimation = document.createElement('style');
     fallAnimation.textContent = `
         @keyframes itemFall {
@@ -485,7 +483,6 @@
     document.head.appendChild(fallAnimation);
 
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM fully loaded and parsed'); // Debug log
         const tooltip = document.getElementById('tooltip');
         const buttons = document.querySelectorAll('.button');
         const toggleFormsBtn = document.getElementById('toggle-forms-btn');
@@ -518,7 +515,6 @@
         });
 
         function updateCountdown() {
-            console.log('Updating countdown'); // Debug log
             const holidays = [
                 { 
                     name: "Christmas", 
@@ -566,14 +562,12 @@
             const diff = nextHolidayDate - now;
 
             if (!countdownElement) return;
-            console.log(`Next holiday: ${nextHoliday.name} on ${nextHolidayDate}`); // Debug log
             if (diff <= 0) {
                 countdownElement.innerText = `Happy ${nextHoliday.name}!`;
                 if (stickyCountdownElement) stickyCountdownElement.innerText = `Happy ${nextHoliday.name}!`;
                 countdownTitle.innerText = `${nextHoliday.emoji} Countdown to ${nextHoliday.name} ${nextHoliday.emoji}`;
 
                 if (nextHoliday.animation) {
-                    console.log(`Running animation for ${nextHoliday.name}`); // Debug log
                     nextHoliday.animation();
                 }
 
@@ -595,8 +589,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Test createItem function directly after DOM is loaded
-        createItem(50, 'heart'); // Test with hearts
+        createItem(50, 'heart'); 
     });
 
     const animationStyles = `
