@@ -240,90 +240,11 @@
 
         }
     }
-    @keyframes itemFall {
-        0% {
-            transform: translateY(-100px) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(100vh) rotate(360deg);
-            opacity: 0;
-        }
-    }
 
-    .snowflake {
-        position: absolute;
-        top: -10px;
-        width: 10px;
-        height: 10px;
-        background-color: white;
-        border-radius: 50%;
-        opacity: 0.8;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        animation: itemFall linear infinite;
-        z-index: 1;
-    }
-
-    .snowflake::before,
-    .snowflake::after {
-        content: '';
-        position: absolute;
-        background-color: white;
-        border-radius: 50%;
-        opacity: 0.8;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    }
-
-    .snowflake::before {
-        width: 2px;
-        height: 15px;
-        top: 50%;
-        left: 50%;
-        margin-top: -7px;
-        margin-left: -1px;
-        transform: rotate(45deg);
-    }
-
-    .snowflake::after {
-        width: 2px;
-        height: 15px;
-        top: 50%;
-        left: 50%;
-        margin-top: -7px;
-        margin-left: -1px;
-        transform: rotate(-45deg);
-    }
-
-    .heart {
-        position: absolute;
-        top: -10px;
-        background-color: red;
-        width: 20px;
-        height: 20px;
-        transform: rotate(-45deg);
-        border-radius: 50% 50% 0 0;
-        z-index: 1;
-        animation: itemFall linear infinite;
-    }
-
-    .heart::before,
-    .heart::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: red;
-        border-radius: 50%;
-    }
-
-    .heart::before {
-        top: -50%;
-        left: 0;
-    }
-
-    .heart::after {
-        top: 0;
-        left: 50%;
+    .content-section {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
     }
 </style>
 
@@ -340,15 +261,21 @@
     <main>
         <section class="about-me">
             <h2>About me</h2>
-            <p>Hi, I go by Lucas (Or as most people call me). INTP-A, GMT-7 (Pacific Standard Time, PST). 
-                I am really shy and introverted irl, so that even if you talked to me first, I most likely would talk back. 
-                I prefer to work alone a lot, I'm probably really mentally unstable, scared, and nervous, although I am really good at hiding it.
-                I try to act different online, make stuff, do stuff the real me can't irl, the one that cannot form a word.
-                I enjoy reading and coding during my free time. Some of my old friends didn't believe I like to read. 
-            </p>
-            <p>I mainly use: Ruby, Python, JavaScript, C++, C#, C, Lua, Roblox Lua (Or as I call, Luau), HTML, CSS, and Java. </p>
-            <p>More hobbies: drawing, running, and laying in bed the entire day thinking about how I can spend my time so much better.<p>
-            <p>Cool things: I can use both hands equally well, I'm very logical, I might seem serious at times, but I'm most likely not...</p>
+            <div class="button-containers">
+                <a class="button click-btn" id="toggle-hobbies-btn" aria-label="Hobbies" data-tooltip="My hobbies!">Hobbies</a>
+                <a class="button click-btn" id="toggle-talents-btn" aria-label="Talents" data-tooltip="My talents!">Talents</a>
+                <a class="button click-btn" id="toggle-other-btn" aria-label="Other" data-tooltip="Other stuff about me!">Other</a>
+            </div>
+            <div id="hobbies-content" class="content-section">
+                <p>More hobbies: drawing, running, and laying in bed the entire day thinking about how I can spend my time so much better.</p>
+            </div>
+            <div id="talents-content" class="content-section">
+                <p>Cool things: I can use both hands equally well, I'm very logical, I might seem serious at times, but I'm most likely not...</p>
+            </div>
+            <div id="other-content" class="content-section">
+                <p>Hi! People call me Lucas. I am INTP-A (Which is basically an introvert) and shy, even though I do not act like it. I prefer to work alone, it's better, I have ADHD which makes it seem like I'm not interested, but I'm a very good listener even though I dislike talking.</p>
+                <p>I mainly use: Ruby, Python, JavaScript, C++, C#, C, Lua, Roblox Lua (Or as I call, Luau), HTML, CSS, and Java.</p>
+            </div>
         </section>
         <section>
             <h2>Google Forms Stuff</h2>
@@ -373,7 +300,7 @@
         <section>
             <h2>School stuff</h2>
             <div class="button-containers">
-                <a href="https://github.com/LucasLiorLE/bim" class="button click-btn" aria-label="School extension hanger" data-tooltip="Hangs an extension that blocks sites and other stuff.">Extension Hanger</a>
+                <a href="school/hanger.html" class="button click-btn" aria-label="School extension hanger" data-tooltip="Hangs an extension that blocks sites and other stuff.">Extension Hanger</a>
             </div>
         </section>
     </main>
@@ -382,7 +309,6 @@
     <div class="tooltip" id="tooltip"></div>
 </body>
 <script>
-    // Create effects
     function getRandomValue(min, max) {
         return Math.random() * (max - min) + min;
     }
@@ -392,6 +318,10 @@
         existingItems.forEach(el => el.remove());
 
         const body = document.body;
+        const head = document.head;
+
+        const items = document.createElement('div');
+        const styles = document.createElement('style');
         
         for (let i = 0; i < amount; i++) {
             const element = document.createElement('div');
@@ -407,10 +337,36 @@
             element.style.top = `${getRandomValue(-window.innerHeight, -size)}px`; 
             
             element.style.animation = `itemFall ${getRandomValue(5, 15)}s linear ${getRandomValue(0, 5)}s infinite`;
-            
+            if (item === 'regular') {
+                element.style.backgroundColor = 'pink';
+                
+                const beforeAfterStyle = `
+                    content: '';
+                    position: absolute;
+                    width: 2px;
+                    height: 15px;
+                    background: white;
+                    top: 50%;
+                    left: 50%;
+                    transform-origin: center;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    .snowflake::before {
+                        ${beforeAfterStyle}
+                        transform: translate(-50%, -50%) rotate(45deg);
+                    }   
+                    .snowflake::after {
+                        ${beforeAfterStyle}
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                    }
+                `;
+                styles.appendChild(style);
+            }
             if (item === 'snowflake') {
                 element.style.backgroundColor = 'white';
-                element.style.borderRadius = '50%';
+                element.style.borderRadius = '0%';
                 element.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.7)';
                 
                 const beforeAfterStyle = `
@@ -435,7 +391,7 @@
                         transform: translate(-50%, -50%) rotate(-45deg);
                     }
                 `;
-                document.head.appendChild(style);
+                styles.appendChild(style);
             } else if (item === 'heart') {
                 element.style.backgroundColor = 'red';
                 element.style.transform = 'rotate(-45deg)';
@@ -460,10 +416,12 @@
                         left: 50%;
                     }
                 `;
-                document.head.appendChild(style);
+                styles.appendChild(style);
             }
             
-            body.appendChild(element);
+            items.appendChild(element);
+            head.appendChild(styles)
+            body.appendChild(items);
         }
     }
 
@@ -482,7 +440,34 @@
     `;
     document.head.appendChild(fallAnimation);
 
+    function createStars(numberOfStars) {
+        const stars = document.createElement('div');
+        const documentHeight = document.documentElement.scrollHeight;
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            star.style.top = Math.random() * documentHeight + 'px';
+            star.style.left = Math.random() * 100 + 'vw';
+
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+
+            star.style.animationDuration = `${Math.random() * 4 + 2}s`;
+            star.style.animationDelay = `${Math.random() * 5}s`;
+        
+            stars.appendChild(star);
+        }
+            
+        document.body.appendChild(stars);
+    }
+
+    createStars(250);
+
     document.addEventListener('DOMContentLoaded', function() {
+        var playing = false;
         const tooltip = document.getElementById('tooltip');
         const buttons = document.querySelectorAll('.button');
         const toggleFormsBtn = document.getElementById('toggle-forms-btn');
@@ -508,12 +493,14 @@
             });
         });
 
+        // Toggle Google Forms visibility
         toggleFormsBtn.addEventListener('click', function() {
             googleForms.style.maxHeight = googleForms.style.maxHeight === '0px' || googleForms.style.maxHeight === '' 
                 ? googleForms.scrollHeight + 'px' 
                 : '0px';
         });
 
+        // Update countdown for holidays
         function updateCountdown() {
             const holidays = [
                 { 
@@ -531,7 +518,7 @@
                 { 
                     name: "Valentine's Day", 
                     date: "February 14", 
-                    animation: () => createItem(50, 'heart'),
+                    animation: () => createItem(75, 'snowflake'),
                     emoji: "❤️💘"
                 },
                 { 
@@ -562,16 +549,22 @@
             const diff = nextHolidayDate - now;
 
             if (!countdownElement) return;
+
             if (diff <= 0) {
                 countdownElement.innerText = `Happy ${nextHoliday.name}!`;
-                if (stickyCountdownElement) stickyCountdownElement.innerText = `Happy ${nextHoliday.name}!`;
+                return;
+            }
+
+            if (stickyCountdownElement) stickyCountdownElement.innerText = `Happy ${nextHoliday.name}!`;
                 countdownTitle.innerText = `${nextHoliday.emoji} Countdown to ${nextHoliday.name} ${nextHoliday.emoji}`;
 
-                if (nextHoliday.animation) {
+            if (!playing) {
+                playing = true;
+                if (diff <= 604800) {
                     nextHoliday.animation();
+                } else {
+                    createItem(100, 'regular');
                 }
-
-                return;
             }
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -589,7 +582,25 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        createItem(50, 'heart'); 
+        const sections = {
+            hobbies: document.getElementById('hobbies-content'),
+            talents: document.getElementById('talents-content'),
+            other: document.getElementById('other-content')
+        };
+
+        function toggleSection(sectionToShow) {
+            Object.keys(sections).forEach(section => {
+                if (section === sectionToShow) {
+                    sections[section].style.maxHeight = sections[section].scrollHeight + 'px';
+                } else {
+                    sections[section].style.maxHeight = '0';
+                }
+            });
+        }
+
+        document.getElementById('toggle-hobbies-btn').addEventListener('click', () => toggleSection('hobbies'));
+        document.getElementById('toggle-talents-btn').addEventListener('click', () => toggleSection('talents'));
+        document.getElementById('toggle-other-btn').addEventListener('click', () => toggleSection('other'));
     });
 
     const animationStyles = `
@@ -606,26 +617,5 @@
     const styleElement = document.createElement('style');
     styleElement.textContent = animationStyles;
     document.head.appendChild(styleElement);
-
-    function createStars(numberOfStars) {
-        for (let i = 0; i < numberOfStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.left = Math.random() * 100 + 'vw';
-
-            const size = Math.random() * 3 + 1;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-
-            star.style.animationDuration = `${Math.random() * 4 + 2}s`;
-            star.style.animationDelay = `${Math.random() * 5}s`;
-
-            document.body.appendChild(star);
-        }
-    }
-
-    createStars(250);
 </script>
 </html>
