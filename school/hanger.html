@@ -12,38 +12,102 @@
       font-family: 'Varela Round', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #121212;
-      color: #e0e0e0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
-      background-color: #1f1f1f;
-      color: #e0e0e0;
-      padding: 20px;
-      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      padding: 15px 25px; /* Reduced padding */
+      margin: 20px auto;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      gap: 15px;
+      max-width: 800px;
+      width: 80%;
     }
 
     .logo {
-      width: 50px;
-      height: 50px;
-      margin-right: 15px;
+      width: 30px; /* Fixed square size */
+      height: 30px;
+      border-radius: 6px; /* Slight rounding of corners */
+      object-fit: cover; /* Ensures image maintains aspect ratio */
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      from {
+        transform: translateX(-100%);
+      }
+
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem; 
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, #fff, #7aa7ff, #ff7a7a, #fff);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradient 8s linear infinite;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .container {
       max-width: 800px;
-      margin: 100px auto;
+      margin: 20px auto;
       padding: 30px;
-      text-align: center;
-      background: #1f1f1f;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 80%;
     }
 
-    select, input[type="range"], button {
+    select,
+    input[type="range"],
+    button {
       font-family: 'Varela Round', sans-serif;
       margin-bottom: 15px;
       padding: 12px;
@@ -157,6 +221,38 @@
       padding: 0;
       border-radius: 0;
       background-color: transparent;
+    }
+
+    .star {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        animation: sparkle 5s infinite ease-in-out;
+        transition: transform 0.3s ease-out;
+    }
+
+    @keyframes sparkle {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+        75% { opacity: 0.3; }
+    }
+
+    .connection-line {
+        position: absolute;
+        pointer-events: none;
+        background: rgba(255, 255, 255, 0.3);
+        height: 1px;
+        transform-origin: left center;
+        z-index: 1;
+        transition: opacity 0.2s ease, background 0.2s ease;
+    }
+
+    @keyframes lineGlow {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 0.8; }
     }
   </style>
 </head>
@@ -352,13 +448,141 @@
       const pageTitle = document.getElementById('pageTitle');
       pageTitle.contentEditable = true;
       pageTitle.focus();
-      pageTitle.onblur = function() {
+      
+      function saveTitle() {
         pageTitle.contentEditable = false;
         document.title = pageTitle.textContent;
+      }
+
+      pageTitle.onblur = saveTitle;
+      
+      pageTitle.onkeydown = function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          saveTitle();
+        }
       };
     }
 
+    function createStars(numberOfStars) {
+        const stars = document.createElement('div');
+        const documentHeight = document.documentElement.scrollHeight;
+        const lineContainer = document.createElement('div');
 
+        stars.id = 'stars';
+        lineContainer.id = 'line-container';
+        document.body.appendChild(lineContainer);
+
+        const starPositions = [];
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.pageY;
+        });
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const originalX = Math.random() * 100;
+            const originalY = Math.random() * documentHeight;
+            const starX = (originalX / 100) * window.innerWidth;
+            const starY = originalY;
+            
+            star.style.left = originalX + 'vw';
+            star.style.top = originalY + 'px';
+            
+            starPositions.push({
+                element: star,
+                x: starX,
+                y: starY,
+                originalX: starX,
+                originalY: starY,
+                dx: 0,
+                dy: 0
+            });
+
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+        
+            stars.appendChild(star);
+        }
+            
+        document.body.appendChild(stars);
+
+        function animate() {
+            const repelRadius = 150;
+            const connectionRadius = 120;
+            const cursorGlowRadius = 200;
+
+            starPositions.forEach(star => {
+                const dx = mouseX - star.x;
+                const dy = mouseY - star.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < repelRadius) {
+                    const force = (1 - distance / repelRadius) * 8;
+                    star.dx = -dx / distance * force;
+                    star.dy = -dy / distance * force;
+                }
+
+                star.dx += (star.originalX - star.x) * 0.05;
+                star.dy += (star.originalY - star.y) * 0.05;
+
+                star.dx *= 0.95;
+                star.dy *= 0.95;
+
+                star.x += star.dx;
+                star.y += star.dy;
+                
+                star.element.style.transform = `translate(${star.x - star.originalX}px, ${star.y - star.originalY}px)`;
+            });
+
+            lineContainer.innerHTML = '';
+            starPositions.forEach((star1, i) => {
+                starPositions.slice(i + 1).forEach(star2 => {
+                    const dx = star2.x - star1.x;
+                    const dy = star2.y - star1.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionRadius) {
+                        const line = document.createElement('div');
+                        line.className = 'connection-line';
+                        
+                        const centerX = star1.x + dx/2;
+                        const centerY = star1.y + dy/2;
+                        const cursorDx = mouseX - centerX;
+                        const cursorDy = mouseY - centerY;
+                        const cursorDistance = Math.sqrt(cursorDx * cursorDx + cursorDy * cursorDy);
+                        
+                        line.style.width = `${distance}px`;
+                        line.style.left = `${star1.x}px`;
+                        line.style.top = `${star1.y}px`;
+                        
+                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                        line.style.transform = `rotate(${angle}deg)`;
+                        
+                        let opacity = (1 - distance / connectionRadius) * 0.3;
+                        if (cursorDistance < cursorGlowRadius) {
+                            opacity += (1 - cursorDistance / cursorGlowRadius) * 0.5;
+                            line.style.background = `rgba(255, 255, 255, ${opacity})`;
+                        }
+                        line.style.opacity = opacity;
+                        
+                        lineContainer.appendChild(line);
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    }
+
+    createStars(150);
   </script>
 </body>
 
