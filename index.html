@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- HTML Meta Tags -->
     <title>LucasLiorLE</title>
     <meta name="description" content="idk what to put here so visit my website pls :pray emoji:">
-    
-    <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://LucasLiorLE.github.io">
     <meta property="og:type" content="website">
     <meta property="og:title" content="LucasLiorLE">
     <meta property="og:description" content="idk what to put here so visit my website pls :pray emoji:">
     <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/28e4d117-059c-4751-8d17-579429135fb6.png?token=HnMqX9kmF8yXh8FksGIcBa2N2ZUgOZHi9o9wwMWQXGE&height=630&width=1200&expires=33270838726">
-    
-    <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="LucasLiorLE.github.io">
     <meta property="twitter:url" content="https://LucasLiorLE.github.io">
     <meta name="twitter:title" content="LucasLiorLE">
     <meta name="twitter:description" content="idk what to put here so visit my website pls :pray emoji:">
     <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/28e4d117-059c-4751-8d17-579429135fb6.png?token=HnMqX9kmF8yXh8FksGIcBa2N2ZUgOZHi9o9wwMWQXGE&height=630&width=1200&expires=33270838726">
-    
-    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
 </head>
 <style>
     body {
@@ -47,6 +40,7 @@
         border-radius: 50%;
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         animation: sparkle 5s infinite ease-in-out;
+        transition: transform 0.3s ease-out;
     }
 
     @keyframes sparkle {
@@ -61,22 +55,75 @@
         }
     }
 
-
     header {
         background: rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
+        border-radius: 15px;
         color: white;
-        padding: 15px;
-        padding-left: 20%;
-        padding-right: 20%;
-        margin: 15px;
+        padding: 25px 40px;
+        margin: 20px auto;
         width: fit-content;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        animation: shine 3s infinite;
     }
 
     header h1 {
         margin: 0;
-        font-size: 200%;
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: linear-gradient(
+            45deg,
+            #fff,
+            #7aa7ff,
+            #ff7a7a,
+            #fff
+        );
+        background-size: 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: gradient 8s linear infinite;
+    }
+
+    @keyframes shine {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
     }
 
     .about-me {
@@ -105,22 +152,92 @@
     }
 
     .main-countdown {
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 20px auto;
+        max-width: 800px;
+        transition: transform 0.3s ease;
+    }
+
+    .main-countdown:hover {
+        transform: translateY(-5px);
+    }
+
+    .main-countdown h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .countdown {
-        font-size: 1.5rem;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        display: inline-block;
-        transition: transform 0.3s ease-out;
+        font-size: 2rem;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
     }
 
-    .countdown:hover {
-        transform: scale(1.01);
+    .countdown-segment {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 15px 20px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 120px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .countdown-segment:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .countdown-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .countdown-label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+    }
+
+    @keyframes countdownPop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes flipNumber {
+        0% {
+            transform: rotateX(0deg);
+        }
+        50% {
+            transform: rotateX(90deg);
+        }
+        100% {
+            transform: rotateX(0deg);
+        }
+    }
+
+    .countdown-number.animate {
+        animation: flipNumber 0.6s ease;
+        transform-origin: bottom;
+        display: inline-block;
     }
 
     .button-containers {
@@ -143,11 +260,22 @@
         transition: background-color 0.3s ease, transform 0.2s ease;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+                   inset 0 0 15px rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
     }
 
     .button:hover {
         transform: scale(1.05);
-        filter: brightness(90%)
+        filter: brightness(90%);
+        transform: translateY(-2px) scale(1.02);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+                   inset 0 0 20px rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
     }
 
     .button-container {
@@ -181,18 +309,46 @@
 
     .click-btn {
         background: rgba(0, 0, 0, 0.2);
-        
+        background: rgba(255, 255, 255, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .click-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+        transition: 0.5s;
+    }
+
+    .click-btn:hover::before {
+        left: 100%;
     }
 
     .tooltip {
         position: absolute;
-        background-color: #333;
+        background: rgba(0, 0, 0, 0.8);
         color: #fff;
-        padding: 5px 10px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        display: none;
+        padding: 8px 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1),
+                   inset 0 0 15px rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
         z-index: 1000;
+        transition: opacity 0.3s ease;
+        white-space: nowrap;
     }
 
     .dropdown-content {
@@ -207,7 +363,6 @@
         border: none;
         display: inline-block;
     }
-
 
     ::-webkit-scrollbar {
         width: 12px;
@@ -246,11 +401,45 @@
         overflow: hidden;
         transition: max-height 0.5s ease-out;
     }
+
+    .connection-line {
+        position: absolute;
+        pointer-events: none;
+        background: rgba(255, 255, 255, 0.3);
+        height: 1px;
+        transform-origin: left center;
+        z-index: 1;
+        transition: opacity 0.2s ease, background 0.2s ease;
+    }
+
+    @keyframes lineGlow {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 0.8; }
+    }
+
+    .performance-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        padding: 10px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .performance-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
 </style>
 
 <body>
+    <button id="performanceButton" class="performance-btn" data-tooltip="Activates performance mode :cool:">💨</button>
     <header>
-        <h1>My work and other stuff</h1>
+        <h1>Welcome to My Portfolio</h1>
     </header>
 
     <div class="main-countdown">
@@ -262,32 +451,41 @@
         <section class="about-me">
             <h2>About me</h2>
             <div class="button-containers">
-                <a class="button click-btn" id="toggle-hobbies-btn" aria-label="Hobbies" data-tooltip="My hobbies!">Hobbies</a>
-                <a class="button click-btn" id="toggle-talents-btn" aria-label="Talents" data-tooltip="My talents!">Talents</a>
+                <a class="button click-btn" id="toggle-hobbies-btn" aria-label="Hobbies" data-tooltip="Stuff I like to do :D">Hobbies</a>
+                <a class="button click-btn" id="toggle-talents-btn" aria-label="Talents" data-tooltip="And here's me bragging...">Talents</a>
                 <a class="button click-btn" id="toggle-other-btn" aria-label="Other" data-tooltip="Other stuff about me!">Other</a>
             </div>
             <div id="hobbies-content" class="content-section">
-                <p>More hobbies: drawing, running, and laying in bed the entire day thinking about how I can spend my time so much better.</p>
+                <p>Hobbies (Most to least favorite): </p>
+                <p>1. Drawing; I absolutely love drawing. I've been doing it since 2016, and Omori in 2020 inspired me more!</p>
+                <P>2. Reading; Reading is very fun. Diary of a Wimpy Kid got me into reading back in 2018! It sounds boring but it's not.</P>
+                <p>3. Coding; It's what I do during my free time. I don't really enjoy it, I just do it as a hobby.</p>
+                <p>4. Running; I would put this over coding but I don't do it as often anymore, but it is very fun!</p>
+                <p>5. Gaming; I find it a waste of time. It's a nice way to pass time, but I have none.</p>
+                <br>
+                <p>Games I enjoy are: Geometry Dash, Bloons TD6, Terraria, Minecraft (Hypixel), and Clash Royale</p>
+                <p>I also like Undertale, OneShot, and OMORI, but I meant like more non-story based.</p>
+                <br>
+                <p>My favorite book series is possibly Ender's Game, by Orson Scott Card. It's crazy how well he predicted how we predict the future!</p>
+                <p>I also like Lord of the Rings, Harry Potter, Percy Jackson (With all the other series), and I still even like DOAWK.</p>
+                <p>For singular books, Lord of the Flies and The Hobbit (If you don't count that as a LOTR book) are nice books.</p>
             </div>
             <div id="talents-content" class="content-section">
-                <p>Cool things: I can use both hands equally well, I'm very logical, I might seem serious at times, but I'm most likely not...</p>
+                <p>I am ambidextrous, I'm very logical (Like a computer, AND/OR/XOR), I might seem serious at times, but I'm most likely not...</p>
+                <p>Also I can do mental math quite quick. Math might be hard, but it's fun when you actually know what you're doing!</p>
+                <p>I self taught myself off documents most coding languages, but I currently use Python, Luau, JavaScript, HTML, and CSS</p>
+                <p>Yes, I can also draw really well, and with both hands it's quite easy to make a fun picture. I dislike bragging about it though.</p>
             </div>
             <div id="other-content" class="content-section">
-                <p>Hi! People call me Lucas. I am INTP-A (Which is basically an introvert) and shy, even though I do not act like it. I prefer to work alone, it's better, I have ADHD which makes it seem like I'm not interested, but I'm a very good listener even though I dislike talking.</p>
-                <p>I mainly use: Ruby, Python, JavaScript, C++, C#, C, Lua, Roblox Lua (Or as I call, Luau), HTML, CSS, and Java.</p>
-            </div>
-        </section>
-        <section>
-            <h2>Google Forms Stuff</h2>
-            <div class="button-containers">
-                <a href="https://forms.gle/TnKRkTu3UJYs42w98" class="button click-btn" target="_blank" aria-label="Mee6 Level Calculator" data-tooltip="Calculates the amount of time it takes for you to reach a certain level with mee6">Mee6 Level Calculator</a>
-                <a href="https://forms.gle/Arzw1nswBPyK2WsGA" class="button click-btn" target="_blank" aria-label="SB Slaps Calculator" data-tooltip="Calculate the amount of time it takes for you to get a certain amount of slaps">SB Slaps Calculator</a>
-                <a href="https://github.com/LucasLiorLE/gforms" class="button click-btn" target="_blank" aria-label="Source Code" data-tooltip="View the source code for the form stuff">Source Code</a>
-            </div>
-            <div class="button-containers"><a class="button click-btn" id="toggle-forms-btn" aria-label="Toggle Google Forms" data-tooltip="Show/Hide Google Forms">Toggle Google Forms</a></div>
-            <div class="dropdown-content" id="google-forms">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZqJWVVtPQMR4olpgyq7KnR-sJUv65EGKpaPRb_9oogxIrZg/viewform?embedded=true" alt="Google Form 1">Loading…</iframe>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdp-7ahz7YpCgIocy52NWfxhtVSIV3DQoAvHHgFlAwZSKWXfw/viewform?embedded=true" alt="Google Form 2">Loading…</iframe>
+                <p>Hi! People call me Lucas (Old friends call me just by V. It's fast and it was the first letter of my name). 
+                    I am INTP-A (Which is basically an introvert) and shy, even though I try not to act like it. 
+                    I am Japanese and Chinese, and I really hate it when people ask me to "prove it by speaking it". It makes me feel uncomfortable. 
+                    I prefer to work alone, it's better, I have ADHD which makes it seem like I'm not interested, but I'm a very good listener even though I dislike talking.
+                    I'm quite insecure about everything currently, I have no idea what to do, and what I'm going to do, but I have a faint idea.
+                    I want to try to act more positive but it's quite hard to act happy when you've only felt neutral for so long.
+                    Why? I like to act unbiased about everything--neutral. I won't just give you something that I won't give for someone else just because you're a friend.
+                    Reason I act mysterious is because I suck at socializing. I'm insecure about telling other people about me...
+                </p>
             </div>
         </section>
         <section>
@@ -298,9 +496,22 @@
             </div>
         </section>
         <section>
-            <h2>School stuff</h2>
+            <h2>School</h2>
             <div class="button-containers">
                 <a href="school/hanger.html" class="button click-btn" aria-label="School extension hanger" data-tooltip="Hangs an extension that blocks sites and other stuff.">Extension Hanger</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Other</h2>
+            <div class="button-containers">
+                <a class="button click-btn" id="toggle-forms-btn" aria-label="Google Forms" data-tooltip="Show/Hide Google Forms">Google Forms</a>
+                <a href="https://github.com/LucasLiorLE/gforms" class="button click-btn" target="_blank" aria-label="Source Code" data-tooltip="View the source code for the form stuff">Source Code</a>
+            </div>
+
+            <div class="dropdown-content" id="google-forms">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZqJWVVtPQMR4olpgyq7KnR-sJUv65EGKpaPRb_9oogxIrZg/viewform?embedded=true" alt="Google Form 1">Loading…</iframe>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdp-7ahz7YpCgIocy52NWfxhtVSIV3DQoAvHHgFlAwZSKWXfw/viewform?embedded=true" alt="Google Form 2">Loading…</iframe>
             </div>
         </section>
     </main>
@@ -309,6 +520,75 @@
     <div class="tooltip" id="tooltip"></div>
 </body>
 <script>
+    let performanceState = parseInt(localStorage.getItem('performanceState')) || 0;
+    const performanceButton = document.getElementById('performanceButton');
+
+    function updatePerformanceMode() {
+        switch(performanceState) {
+            case 0:
+                if (document.getElementById('seasonal')) document.getElementById('seasonal').style.display = '';
+                if (document.getElementById('stars')) document.getElementById('stars').style.display = '';
+                if (document.getElementById('line-container')) document.getElementById('line-container').style.display = '';
+                performanceButton.setAttribute('data-tooltip', 'Hide seasonal effects');
+                if (tooltip.style.display === 'block') {
+                    tooltip.innerText = 'Hide seasonal effects';
+                }
+                break;
+            case 1:
+                if (document.getElementById('seasonal')) document.getElementById('seasonal').style.display = 'none';
+                if (document.getElementById('stars')) document.getElementById('stars').style.display = '';
+                if (document.getElementById('line-container')) document.getElementById('line-container').style.display = '';
+                performanceButton.setAttribute('data-tooltip', 'Hide stars');
+                if (tooltip.style.display === 'block') {
+                    tooltip.innerText = 'Hide stars';
+                }
+                break;
+            case 2:
+                if (document.getElementById('seasonal')) document.getElementById('seasonal').style.display = '';
+                if (document.getElementById('stars')) document.getElementById('stars').style.display = 'none';
+                if (document.getElementById('line-container')) document.getElementById('line-container').style.display = 'none';
+                performanceButton.setAttribute('data-tooltip', 'Hide all');
+                if (tooltip.style.display === 'block') {
+                    tooltip.innerText = 'Hide all';
+                }
+                break;
+            case 3:
+                if (document.getElementById('seasonal')) document.getElementById('seasonal').style.display = 'none';
+                if (document.getElementById('stars')) document.getElementById('stars').style.display = 'none';
+                if (document.getElementById('line-container')) document.getElementById('line-container').style.display = 'none';
+                performanceButton.setAttribute('data-tooltip', 'Show everything');
+                if (tooltip.style.display === 'block') {
+                    tooltip.innerText = 'Show everything';
+                }
+                break;
+        }
+        localStorage.setItem('performanceState', performanceState);
+    }
+
+    performanceButton.addEventListener('click', () => {
+        performanceState = (performanceState + 1) % 4;
+        updatePerformanceMode();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePerformanceMode();
+        performanceButton.addEventListener('mouseover', function(event) {
+            const tooltipText = event.target.getAttribute('data-tooltip');
+            tooltip.innerText = tooltipText;
+            tooltip.style.display = 'block';
+        });
+
+        performanceButton.addEventListener('mousemove', function(event) {
+            tooltip.style.left = event.pageX + 10 + 'px';
+            tooltip.style.top = event.pageY + 10 + 'px';
+        });
+
+        performanceButton.addEventListener('mouseout', function() {
+            tooltip.style.display = 'none';
+        });
+
+    });
+    
     function getRandomValue(min, max) {
         return Math.random() * (max - min) + min;
     }
@@ -325,6 +605,7 @@
         
         for (let i = 0; i < amount; i++) {
             const element = document.createElement('div');
+
             element.classList.add(item);
             
             const size = getRandomValue(5, 15);
@@ -419,7 +700,10 @@
                 styles.appendChild(style);
             }
             
+            styles.id = 'seasonalStyles'
             items.appendChild(element);
+
+            items.id = 'seasonal'
             head.appendChild(styles)
             body.appendChild(items);
         }
@@ -443,35 +727,130 @@
     function createStars(numberOfStars) {
         const stars = document.createElement('div');
         const documentHeight = document.documentElement.scrollHeight;
+        const lineContainer = document.createElement('div');
+
+        stars.id = 'stars'
+        lineContainer.id = 'line-container';
+        document.body.appendChild(lineContainer);
+
+        const starPositions = [];
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.pageY;
+        });
 
         for (let i = 0; i < numberOfStars; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
-
-            star.style.top = Math.random() * documentHeight + 'px';
-            star.style.left = Math.random() * 100 + 'vw';
+            
+            const originalX = Math.random() * 100;
+            const originalY = Math.random() * documentHeight;
+            const starX = (originalX / 100) * window.innerWidth;
+            const starY = originalY;
+            
+            star.style.left = originalX + 'vw';
+            star.style.top = originalY + 'px';
+            
+            starPositions.push({
+                element: star,
+                x: starX,
+                y: starY,
+                originalX: starX,
+                originalY: starY,
+                dx: 0,
+                dy: 0
+            });
 
             const size = Math.random() * 3 + 1;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
-
-            star.style.animationDuration = `${Math.random() * 4 + 2}s`;
-            star.style.animationDelay = `${Math.random() * 5}s`;
         
             stars.appendChild(star);
         }
             
         document.body.appendChild(stars);
+
+        function animate() {
+            const repelRadius = 150;
+            const connectionRadius = 120;
+            const cursorGlowRadius = 200;
+
+            starPositions.forEach(star => {
+                const dx = mouseX - star.x;
+                const dy = mouseY - star.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < repelRadius) {
+                    const force = (1 - distance / repelRadius) * 8;
+                    star.dx = -dx / distance * force;
+                    star.dy = -dy / distance * force;
+                }
+
+                star.dx += (star.originalX - star.x) * 0.05;
+                star.dy += (star.originalY - star.y) * 0.05;
+
+                star.dx *= 0.95;
+                star.dy *= 0.95;
+
+                star.x += star.dx;
+                star.y += star.dy;
+                
+                star.element.style.transform = `translate(${star.x - star.originalX}px, ${star.y - star.originalY}px)`;
+            });
+
+            lineContainer.innerHTML = '';
+            starPositions.forEach((star1, i) => {
+                starPositions.slice(i + 1).forEach(star2 => {
+                    const dx = star2.x - star1.x;
+                    const dy = star2.y - star1.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionRadius) {
+                        const line = document.createElement('div');
+                        line.className = 'connection-line';
+                        
+                        const centerX = star1.x + dx/2;
+                        const centerY = star1.y + dy/2;
+                        const cursorDx = mouseX - centerX;
+                        const cursorDy = mouseY - centerY;
+                        const cursorDistance = Math.sqrt(cursorDx * cursorDx + cursorDy * cursorDy);
+                        
+                        line.style.width = `${distance}px`;
+                        line.style.left = `${star1.x}px`;
+                        line.style.top = `${star1.y}px`;
+                        
+                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                        line.style.transform = `rotate(${angle}deg)`;
+                        
+                        let opacity = (1 - distance / connectionRadius) * 0.3;
+                        if (cursorDistance < cursorGlowRadius) {
+                            opacity += (1 - cursorDistance / cursorGlowRadius) * 0.5;
+                            line.style.background = `rgba(255, 255, 255, ${opacity})`;
+                        }
+                        line.style.opacity = opacity;
+                        
+                        lineContainer.appendChild(line);
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
     }
 
-    createStars(250);
+    createStars(150);
 
     document.addEventListener('DOMContentLoaded', function() {
         var playing = false;
         const tooltip = document.getElementById('tooltip');
         const buttons = document.querySelectorAll('.button');
         const toggleFormsBtn = document.getElementById('toggle-forms-btn');
-        const googleForms = document.getElementById('google-forms');
+        const googleForms = document.getElementById('google-fworms');
         const countdownElement = document.getElementById('countdown');
         const countdownTitle = document.getElementById('main-title');
         const stickyCountdownElement = document.getElementById('sticky-countdown');
@@ -493,14 +872,12 @@
             });
         });
 
-        // Toggle Google Forms visibility
         toggleFormsBtn.addEventListener('click', function() {
             googleForms.style.maxHeight = googleForms.style.maxHeight === '0px' || googleForms.style.maxHeight === '' 
                 ? googleForms.scrollHeight + 'px' 
                 : '0px';
         });
 
-        // Update countdown for holidays
         function updateCountdown() {
             const holidays = [
                 { 
@@ -572,9 +949,33 @@
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            const timeString = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+            const timeComponents = [
+                { value: days, label: 'Days' },
+                { value: hours, label: 'Hours' },
+                { value: minutes, label: 'Minutes' },
+                { value: seconds, label: 'Seconds' }
+            ];
 
-            countdownElement.innerText = timeString;
+            countdownElement.innerHTML = timeComponents.map(component => `
+                <div class="countdown-segment">
+                    <div class="countdown-number">${String(component.value).padStart(2, '0')}</div>
+                    <div class="countdown-label">${component.label}</div>
+                </div>
+            `).join('');
+
+            const digits = countdownElement.querySelectorAll('.digit');
+            digits.forEach((digit, i) => {
+                const newValue = digit.textContent;
+                if (digit.getAttribute('data-value') !== newValue) {
+                    digit.setAttribute('data-value', newValue);
+                    void digit.offsetWidth;
+                    digit.classList.remove('animate');
+                    requestAnimationFrame(() => {
+                        digit.classList.add('animate');
+                    });
+                }
+            });
+
             if (stickyCountdownElement) stickyCountdownElement.innerText = timeString;
             countdownTitle.innerText = `${nextHoliday.emoji} Countdown to ${nextHoliday.name} ${nextHoliday.emoji}`;
         }
@@ -589,13 +990,14 @@
         };
 
         function toggleSection(sectionToShow) {
-            Object.keys(sections).forEach(section => {
-                if (section === sectionToShow) {
-                    sections[section].style.maxHeight = sections[section].scrollHeight + 'px';
-                } else {
+            if (sections[sectionToShow].style.maxHeight !== '0px' && sections[sectionToShow].style.maxHeight !== '') {
+                sections[sectionToShow].style.maxHeight = '0';
+            } else {
+                Object.keys(sections).forEach(section => {
                     sections[section].style.maxHeight = '0';
-                }
-            });
+                });
+                sections[sectionToShow].style.maxHeight = sections[sectionToShow].scrollHeight + 'px';
+            }
         }
 
         document.getElementById('toggle-hobbies-btn').addEventListener('click', () => toggleSection('hobbies'));
