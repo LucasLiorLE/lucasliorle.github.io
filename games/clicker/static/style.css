@@ -1,0 +1,384 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.left-panel, .right-panel {
+    width: 280px;
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.main-area {
+    text-align: center;
+    flex-grow: 1;
+    padding: 20px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #3d4db7;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #32408f;
+}
+
+button:disabled {
+    background: #1f1f1f;
+    color: #666;
+    cursor: not-allowed;
+}
+
+#clickButton {
+    font-size: 32px;
+    padding: 30px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 20px auto;
+    background: #3d4db7;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transition: transform 0.1s;
+}
+
+#clickButton:active {
+    transform: scale(0.95);
+}
+
+#points {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+.shop-item {
+    margin-bottom: 15px;
+}
+
+.description {
+    display: block;
+    font-size: 12px;
+    color: rgba(224,224,224,0.8);
+    margin-top: 5px;
+}
+
+h2 {
+    color: #e0e0e0;
+    border-bottom: 2px solid #404040;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    display: inline-block;
+    width: 45%;
+    margin: 5px;
+    background: #2d2d2d;
+    opacity: 0.7;
+}
+
+.tab-button.active {
+    opacity: 1;
+    background: #3d4db7;
+}
+
+.tab-content {
+    display: none;
+    background: #2d2d2d;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    text-align: left;
+    padding: 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    left: 105%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid #404040;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+#cps {
+    font-size: 24px;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+.tooltiptext br {
+    margin-bottom: 5px;
+}
+
+.shop-item button, .upgrades-section button {
+    background: #3d4db7;
+    border: 1px solid #32408f;
+}
+
+.shop-item button:hover, .upgrades-section button:hover {
+    background: #32408f;
+}
+
+/* Add transitions for hover effects */
+.shop-item button, .upgrades-section button, #clickButton {
+    transition: all 0.2s ease;
+}
+
+.shop-item button:hover, .upgrades-section button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Stats and text colors */
+.tab-content p {
+    color: #b0b0b0;
+}
+
+.tab-content span {
+    color: #e0e0e0;
+}
+
+/* ...existing code... */
+
+/* Update tab content rules */
+.tab-content {
+    display: none;
+    background: #2d2d2d;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Important: remove .active from regular display rules */
+#shop.tab-content.active,
+#upgrades.tab-content.active,
+#settings.tab-content.active,
+#stats.tab-content.active {
+    display: block;
+}
+
+/* Make tabs container work properly */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.tab-button {
+    flex: 1;
+    margin: 0;
+    padding: 10px;
+}
+
+/* Ensure tabs don't inherit shop button styles */
+.tabs .tab-button {
+    border: none;
+    transform: none !important;
+    box-shadow: none;
+}
+
+.tabs .tab-button:hover {
+    transform: none !important;
+    box-shadow: none;
+}
+
+.tab-button.active {
+    opacity: 1;
+    background: #3d4db7;
+}
+
+/* ...rest of existing code... */
+
+/* ...existing code... */
+
+.prestige-info {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.prestige-info p {
+    margin: 15px 0;
+    line-height: 1.4;
+}
+
+#prestigeButton {
+    background: #8e44ad;
+    margin-top: 20px;
+}
+
+#prestigeButton:hover {
+    background: #732d91;
+}
+
+#prestigeButton:disabled {
+    background: #1f1f1f;
+}
+
+#prestigeLevel {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8e44ad;
+}
+
+/* ...existing code... */
+
+#prestigePoints, #totalPrestigePoints {
+    color: #9b59b6;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#possiblePrestigePoints {
+    color: #9b59b6;
+    font-weight: bold;
+}
+
+/* ...existing code... */
+
+.shop-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.shop-tab-button {
+    flex: 1;
+    min-width: 100px;
+    padding: 8px;
+    background: #2d2d2d;
+    border: 1px solid #404040;
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+.shop-tab-button.active {
+    background: #3d4db7;
+    opacity: 1;
+    border-color: #32408f;
+}
+
+.shop-category {
+    display: none;
+}
+
+.shop-category.active {
+    display: block;
+}
+
+.shop-info {
+    color: #888;
+    font-size: 14px;
+    margin: 10px 0;
+    text-align: center;
+    font-style: italic;
+}
+
+#prestigeShopTab, #specialShopTab {
+    position: relative;
+}
+
+#prestigeShopTab::after {
+    content: "★";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: #9b59b6;
+    font-size: 10px;
+}
+
+#specialShopTab::after {
+    content: "⚡";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: #f1c40f;
+    font-size: 10px;
+}
+
+/* ...existing code... */
+
+.dev-controls {
+    padding: 10px 0;
+}
+
+.dev-controls button {
+    background: #c0392b;
+    margin: 5px 0;
+}
+
+.dev-controls button:hover {
+    background: #a93226;
+}
+
+.dev-info {
+    margin-top: 15px;
+    padding: 10px;
+    background: #1a1a1a;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#devTab {
+    color: #e74c3c;
+}
+
+#autoSaveStatus {
+    font-weight: bold;
+    color: #2ecc71;
+}
+
+#autoSaveStatus.disabled {
+    color: #e74c3c;
+}
