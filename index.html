@@ -454,6 +454,7 @@
                 <a class="button click-btn" id="toggle-hobbies-btn" aria-label="Hobbies" data-tooltip="Stuff I like to do :D">Hobbies</a>
                 <a class="button click-btn" id="toggle-talents-btn" aria-label="Talents" data-tooltip="And here's me bragging...">Talents</a>
                 <a class="button click-btn" id="toggle-other-btn" aria-label="Other" data-tooltip="Other stuff about me!">Other</a>
+                <a class="button click-btn" id="toggle-social-btn" aria-label="Social" data-tooltip="My other social profiles.">Social</a>
             </div>
             <div id="hobbies-content" class="content-section">
                 <p>Hobbies (Most to least favorite): </p>
@@ -487,6 +488,22 @@
                     Reason I act mysterious is because I suck at socializing. I'm insecure about telling other people about me...
                 </p>
             </div>
+            <div id="social-content" class="content-section">
+                <p>ORCID: <a href="https://orcid.org/0009-0009-5851-792X">Lucas Li</a></p>
+                <p>Main Gmail: <a href="mailto:LucasLiorLEYT@gmail.com">LucasLiorLEYT@gmail.com</a></p>
+                <p>Secondary Gmail: <a href="mailto:simpthing25@gmail.com">simpthing25@gmail.com</a></p>
+                <p>Current Roblox: <a href="https://www.roblox.com/users/1919501120/profile">LucasLiorLE</a></p>
+                <p>Alt on steam (I don't share my main): <a href="https://steamcommunity.com/id/LucasLiorLE/">LucasLiorLE</a></p>
+
+                <!--Add Tomorrow-->
+
+                <p>Main Discord: <a href="https://discord.com/users/721151215010054165">LucasLiorLE</a></p>
+                <p>Discord Server: <a href="">LucasLiorLE</a></p>
+
+                <p>Other:
+                    Nothing yet too lazy
+                </p>
+            </div>
         </section>
         <section>
             <h2>Discord Bot (v2.0.0)</h2>
@@ -500,6 +517,13 @@
             <div class="button-containers">
                 <a href="school/hanger.html" class="button click-btn" aria-label="School extension hanger" data-tooltip="Hangs an extension that blocks sites and other stuff.">Extension Hanger</a>
             </div>
+        </section>
+        <section>
+            <h2>Games</h2>
+            <div class="button-containers">
+                <a class="button click-btn" aria-label="Cookie Clicker" data-tooltip="'For educational purposes only'" href="games/cookieclicker">Cookie Clicker</a>
+                <a class="button click-btn" aria-label="Clicker game I'm not done with" data-tooltip="Not done" href="games/clicker">Test</a>
+            </div>   
         </section>
 
         <section>
@@ -941,6 +965,7 @@
                     nextHoliday.animation();
                 } else {
                     createItem(100, 'regular');
+                    if (performanceState === 1 || performanceState === 3)  document.getElementById('seasonal').style.display = 'none'
                 }
             }
 
@@ -986,7 +1011,8 @@
         const sections = {
             hobbies: document.getElementById('hobbies-content'),
             talents: document.getElementById('talents-content'),
-            other: document.getElementById('other-content')
+            other: document.getElementById('other-content'),
+            social: document.getElementById('social-content')
         };
 
         function toggleSection(sectionToShow) {
@@ -1003,6 +1029,7 @@
         document.getElementById('toggle-hobbies-btn').addEventListener('click', () => toggleSection('hobbies'));
         document.getElementById('toggle-talents-btn').addEventListener('click', () => toggleSection('talents'));
         document.getElementById('toggle-other-btn').addEventListener('click', () => toggleSection('other'));
+        document.getElementById('toggle-social-btn').addEventListener('click', () => toggleSection('social'))
     });
 
     const animationStyles = `
