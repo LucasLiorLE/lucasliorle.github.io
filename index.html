@@ -2,244 +2,265 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LucasLiorLE</title>
-    <meta name="description" content="idk what to put here so visit my website pls :pray emoji:">
-    <meta property="og:url" content="https://LucasLiorLE.github.io">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="LucasLiorLE">
-    <meta property="og:description" content="idk what to put here so visit my website pls :pray emoji:">
-    <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/28e4d117-059c-4751-8d17-579429135fb6.png?token=HnMqX9kmF8yXh8FksGIcBa2N2ZUgOZHi9o9wwMWQXGE&height=630&width=1200&expires=33270838726">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="LucasLiorLE.github.io">
-    <meta property="twitter:url" content="https://LucasLiorLE.github.io">
-    <meta name="twitter:title" content="LucasLiorLE">
-    <meta name="twitter:description" content="idk what to put here so visit my website pls :pray emoji:">
-    <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/28e4d117-059c-4751-8d17-579429135fb6.png?token=HnMqX9kmF8yXh8FksGIcBa2N2ZUgOZHi9o9wwMWQXGE&height=630&width=1200&expires=33270838726">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        html, body {
-            min-height: 100vh;
-            height: 100%;
-            overflow-x: hidden;
-        }
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            transition: background 0.5s, color 0.5s;
-        }
-        .theme-toggle {
-            position: fixed;
-            top: 1.5rem;
-            right: 2rem;
-            z-index: 1000;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            font-size: 1.5rem;
-            background: #fff;
-            transition: background 0.3s, color 0.3s;
-        }
-        .theme-toggle.dark {
-            background: #23272f;
-            color: #fff;
-        }
-        .theme-toggle:hover {
-            background: #e2e8f0;
-        }
-        .bg-modern {
-            /* Subtle blue-aqua-turquoise gradient */
-            background: linear-gradient(135deg, #eafcff 0%, #e2f7fa 50%, #e2f7f0 100%);
-        }
-        .bg-modern-dark {
-            /* Subtle dark blue-turquoise gradient for dark mode */
-            background: linear-gradient(135deg, #232f34 0%, #23434a 100%);
-        }
-        #mainCard {
-            transition: background 0.5s, color 0.5s;
-            border-radius: 1.25rem;
-            box-shadow: 0 4px 32px rgba(0,0,0,0.10);
-            border: none;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(2px);
-        }
-        .bg-dark#mainCard {
-            background: rgba(40,44,52,0.92);
-            backdrop-filter: blur(2px);
-        }
-        h1, h2, h4 {
-            letter-spacing: -0.5px;
-        }
-        section + section {
-            margin-top: 2.5rem !important;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 2rem;
-        }
-        .btn, .btn:visited {
-            border-radius: 0.75rem !important;
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-        }
-        .btn:hover, .btn:focus {
-            filter: brightness(0.95);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-            text-decoration: none;
-        }
-        .btn[style*="#000"]:hover, .btn[style*="#000"]:focus {
-            background-color: #222 !important;
-            color: #fff !important;
-        }
-        .btn[style*="#e53935"]:hover, .btn[style*="#e53935"]:focus {
-            background-color: #b71c1c !important;
-        }
-        .btn[style*="#3ac03a"]:hover, .btn[style*="#3ac03a"]:focus {
-            background-color: #259925 !important;
-        }
-        .btn[style*="#8e44ad"]:hover, .btn[style*="#8e44ad"]:focus {
-            background-color: #6c3483 !important;
-        }
-        .btn[style*="#1976d2"]:hover, .btn[style*="#1976d2"]:focus {
-            background-color: #1251a2 !important;
-        }
-        .btn[style*="#5865F2"]:hover, .btn[style*="#5865F2"]:focus {
-            background-color: #4048b3 !important;
-        }
-        .btn .icon, .btn .roblox-icon {
-            width: 1.2em;
-            height: 1.2em;
-            vertical-align: middle;
-            margin-right: 0.5em;
-            margin-bottom: 0.15em;
-        }
-        @media (max-width: 600px) {
-            #mainCard {
-                padding: 1.2rem !important;
-            }
-            .theme-toggle {
-                top: 1rem;
-                right: 1rem;
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Little Corner of the Internet</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-modern">
-    <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
-        🌙
-    </button>
-    <div class="container mt-5">
-        <div class="card shadow-lg p-4" id="mainCard">
-            <header class="mb-4">
-                <h1 class="display-4 fw-bold mb-2">cool site name</h1>
-            </header>
-            <section>
-                <h2 class="h4 mb-3">About Me</h2>
-                <p>Hi! Everyone calls me Lucas or whatever, I don't really care what you call me unless it's not obvious. Same thing with pronouns, I don't care.</p>
-                <p>I'm into pretty much anything that involves creating. Whether it's programming, drawing, or just building cool ideas from scratch. I do it because I enjoy it, not because I have to. 
-                    No, I won't make something for you unless I feel like it, that's what makes it a hobby.
-                </p>
-                <p>I don't really enjoy gaming, I find it boring and non-productive. I prefer to just spend my time doing something productve 
-                    or learning based, like reading (I love reading books) or programming.
-                </p>
-                <p>I'm INTP-A, and I take anything way too seriously so just don't take me too seriously, I don't mean to be rude or anything, it's just how I am.</p>
-            </section>
-            <section class="mt-4">
-                <h2 class="h4 mb-3">Social Links</h2>
-                <div class="d-flex flex-wrap gap-2">
-                    <a href="https://www.roblox.com/users/1919501120/profile" class="btn btn-primary" style="background-color:#1976d2;border-color:#1976d2;" target="_blank" rel="noopener">
-                        <svg class="roblox-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                            <polygon points="120,60 60,392 392,452 452,120" fill="#fff"/>
-                            <rect x="210" y="210" width="92" height="92" transform="rotate(14 256 256)" fill="#335fff"/>
-                        </svg>
-                        Roblox
-                    </a>
-                    <a href="https://discord.com/users/721151215010054165" class="btn btn-primary" style="background-color:#5865F2;border-color:#5865F2;" target="_blank" rel="noopener">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.515.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276c-.598.3428-1.2205.6447-1.8733.8923a.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286ZM8.02 15.3312c-1.1835 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189Zm7.9748 0c-1.1835 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" fill="#fff"/>
-                        </svg>
-                        Discord
-                    </a>
-                    <a href="https://github.com/LucasLiorLE" class="btn" style="background-color:#000;border-color:#000;color:#fff;" target="_blank" rel="noopener">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                        GitHub
-                    </a>
-                    <a href="https://orcid.org/0009-0009-5851-792X" class="btn" style="background-color:#3ac03a;color:white;" target="_blank" rel="noopener">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#3ac03a"/><path d="M8.5 7.5v9m7-9v9m-7-4.5h7" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-                        Orcid
-                    </a>
+<body>
+    <header class="hero">
+        <nav>
+            <div class="container">
+                <div class="nav-logo">
+                    <h3>INSERT wait what was that thing called again HERE</h3>
                 </div>
-            </section>
-            <section class="mt-4">
-                <h2 class="h4 mb-3">My Work</h2>
-                <div class="d-flex flex-wrap gap-2">
-                    <a href="https://lucasliorle.github.io/sbwr/" class="btn" style="background-color:#0F9D58;color:#fff;border-color:#0F9D58;" target="_blank" rel="noopener">
-                        <svg width="24" height="24" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="10" y="10" width="28" height="2.5" rx="1" fill="#fff"/>
-                            <rect x="10" y="10" width="2.5" height="30" rx="1" fill="#fff"/>
-                            <rect x="10" y="24" width="28" height="2.5" rx="1" fill="#fff"/>
-                            <rect x="36" y="10" width="2.5" height="30" rx="1" fill="#fff"/>
-                            <rect x="10" y="38" width="28" height="2.5" rx="1" fill="#fff"/>
-                            <rect x="23" y="10" width="2.5" height="30" rx="1" fill="#fff"/>
-                        </svg>
-                        Slap Battles World Records
-                    </a>
-                    <a href="https://lucasliorle.github.io/wordle/" class="btn" style="background-color:#000;color:#fff;border-color:#000;" target="_blank" rel="noopener">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#fff"/><rect x="4" y="4" width="16" height="16" rx="3" fill="#000"/><text x="12" y="17" text-anchor="middle" font-size="10" fill="#fff" font-family="Arial, sans-serif">W</text></svg>
-                        Wordle
-                    </a>
-                    <a href="https://www.roblox.com/games/117135697675477/random-item-game" class="btn btn-primary" style="background-color:#1976d2;border-color:#1976d2;" target="_blank" rel="noopener">
-                        <svg class="roblox-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                            <polygon points="120,60 60,392 392,452 452,120" fill="#fff"/>
-                            <rect x="210" y="210" width="92" height="92" transform="rotate(14 256 256)" fill="#335fff"/>
-                        </svg>
-                        random item game
-                    </a>
-                    <a href="https://discord.com/oauth2/authorize?client_id=733021769073557604" class="btn" style="background-color:#b288ff;color:#fff;border-color:#b288ff;" target="_blank" rel="noopener">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.515.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276c-.598.3428-1.2205.6447-1.8733.8923a.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286ZM8.02 15.3312c-1.1835 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189Zm7.9748 0c-1.1835 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" fill="#fff"/>
-                        </svg>
-                        AstralV
-                    </a>
+                <ul class="nav-links">
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#interests">hobbies</a></li>
+                    <li><a href="#projects">creations</a></li>
+                    <li><a href="#contact">contact</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
                 </div>
-            </section>
-        </div>
-    </div>
-    <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const mainCard = document.getElementById('mainCard');
-        function setTheme(dark) {
-            if (dark) {
-                body.classList.remove('bg-modern');
-                body.classList.add('bg-modern-dark', 'text-light');
-                mainCard.classList.add('bg-dark', 'text-light');
-                mainCard.classList.remove('bg-white');
-                themeToggle.textContent = '☀️';
-                themeToggle.classList.add('dark');
-            } else {
-                body.classList.add('bg-modern');
-                body.classList.remove('bg-modern-dark', 'text-light');
-                mainCard.classList.remove('bg-dark', 'text-light');
-                mainCard.classList.add('bg-white');
-                themeToggle.textContent = '🌙';
-                themeToggle.classList.remove('dark');
-            }
-        }
+            </div>
+        </nav>
 
-        let darkMode = localStorage.getItem('darkMode') === 'true';
-        setTheme(darkMode);
-        themeToggle.addEventListener('click', () => {
-            darkMode = !darkMode;
-            localStorage.setItem('darkMode', darkMode);
-            setTheme(darkMode);
-        });
-    </script>
+        <div class="hero-content">
+            <div class="container">
+                <h1>hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</h1>
+                <h2>Welcome to my little corner of the internet</h2>
+                <p class="hero-description">
+                    it's like my mini portfolio
+                </p>
+                <a href="#about" class="cta-button">about me</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="countdown" class="countdown-section">
+        <div class="container">
+            <h2>Remaining Day Calculator</h2>
+            <div class="countdown-container">
+                <div class="countdown-input">
+                    <label for="dateInput">Choose a date:</label>
+                    <input type="datetime-local" id="dateInput" />
+                    <button id="setCountdown" class="countdown-btn">Set Countdown</button>
+                </div>
+                
+                <div class="preset-dates">
+                    <h3>Or pick a holiday:</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-holiday="halloween">🎃 Halloween</button>
+                        <button class="preset-btn" data-holiday="christmas">🎄 Christmas</button>
+                        <button class="preset-btn" data-holiday="newyears">🎊 New Year's</button>
+                        <button class="preset-btn" data-holiday="valentines">💖 Valentine's</button>
+                    </div>
+                </div>
+
+                <div class="countdown-display" id="countdownDisplay" style="display: none;">
+                    <h3 id="countdownTitle">Countdown to...</h3>
+                    <div class="countdown-timer">
+                        <div class="time-unit">
+                            <span id="days">0</span>
+                            <label>Days</label>
+                        </div>
+                        <div class="time-unit">
+                            <span id="hours">0</span>
+                            <label>Hours</label>
+                        </div>
+                        <div class="time-unit">
+                            <span id="minutes">0</span>
+                            <label>Minutes</label>
+                        </div>
+                        <div class="time-unit">
+                            <span id="seconds">0</span>
+                            <label>Seconds</label>
+                        </div>
+                    </div>
+                    <button id="clearCountdown" class="countdown-btn">Clear Countdown</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>about me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        hi people call me lucas. If you don't know, i don't like being formal, so this 
+                        website will reflect that. This ain't a professional portfolio or whatever,
+                        more like just me putting stuff here so i remember what i did.
+                    </p>
+                    <p>
+                        I'm Japanese and Chinese. INTP-A or whatever it was I don't care. My timezone is 
+                        PST/PDT if you for some reason needed to know all that.
+                    </p>
+                    <p>
+                        My favorite games: Hallow Knight, OneShot, Omori, Undertale, Minecraft, Zelda series (specifically BOTW),
+                        terraria, and clash royale. Currently I play Clash Royale the most, and that's because
+                        my friend is playing a lot of 2v2s
+                    </p>
+                    <p>
+                        My favorite subject is science. I also like math, but science more. Why? it contains math as well. 
+                        Look at physics (This thing sucked) and chemistry (this one sucked more), it's quite a lot of math.
+                        Also science contains computer science (haha get it), and computer science is fun
+                    </p>
+                </div>
+                <div class="profile-image">
+                    <div class="image-placeholder">
+                        <img src="static/images/omori.png" alt="noyt my image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" class="interests">
+        <div class="container">
+            <h2>hobbies and other stuff</h2>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <div class="icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>creativity</h3>
+                    <p>I love drawing! Probably the one thing i've done for the longest time</p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Programming</h3>
+                    <p>I personally just find this fun. I do it whenever I'm bored (to procrastinate). Python is the language I use most often, however I know js, c family, java (learning this one but it seems very similar to c#), and some other ones i can't think of. Oh swift and idk</p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Reading</h3>
+                    <p>If I learn one thing, i want to learn everything about it. :getDescandants(). I want to know how everything is connected, which also comes at a cost that leads me to procrastinate on studying</p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Music</h3>
+                    <p>Green Day is my favorite band and there's no doubt in that (my playlist is 35% their songs and its 150 songs long). Oh I can also play flute (i suck) and guitar</p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Gardening</h3>
+                    <p>I grow lots of plants. Some basic ones are corn, pepper, tomatoes, corn, and some flowers. I might add some pictures on this site if I get around to it (i just find adding pictures to sites annoying)</p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="icon">
+                        <i class="fas fa-gear"></i>
+                    </div>
+                    <h3>Engineering & chemistry</h3>
+                    <p>I know it's not related but i dont wanna add aonther 3 boxes after this to make it 9 boxes. But both of them are easy at the start and hard at the end unless you understand cause and effect.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>some things i made</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-globe fa-3x"></i>
+                        <p style="margin-top: 1rem;">you're here</p>
+                    </div>
+                    <div class="project-content">
+                        <h3>This</h3>
+                        <p>You're looking at it! This little corner of the internet where I get to share what makes me tick. Built with love, a bit of CSS magic, and probably too much coffee.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=E4WlUXrJgy4" class="project-link">Click me to not do anything!</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="static/images/Planck.png" alt="Planck Bot" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Planck</h3>
+                        <p>Incremental bot i made. As of 9/7/2025, it's in development. I don't know when i plan to upload it so other users can also use it.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Discord Bot</span>
+                            <span class="tech-tag">Incremental</span>
+                        </div>
+                        <a href="https://planck-bot.github.io" class="project-link">Website</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="static/images/AstralV.png" alt="AstralV" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+                    </div>
+                    <div class="project-content">
+                        <h3>AstralV</h3>
+                        <p>Cluncky bot I made for fun for friends. dont use it for something serious. I hate how cluncky it is, probably will rewrite it.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Discord Bot</span>
+                            <span class="tech-tag">Fun</span>
+                        </div>
+                        <a href="https://www.AstralV.xyz" class="project-link">Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>contact info</h2>
+            <p>
+                If you want to talk to me (i probably won't respond)
+            </p>
+            <div class="contact-links">
+                <a href="mailto:lucasliorlee@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    Email Me
+                </a>
+                <a href="https://github.com/LucasLiorLE" class="contact-link">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="https://discord.com/users/721151215010054165" class="contact-link">
+                    <i class="fab fa-discord"></i>
+                    Discord
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>congrats on finding the footer woah</p>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js"></script>
 </body>
 </html>
