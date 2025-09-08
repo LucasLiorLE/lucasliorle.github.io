@@ -101,13 +101,18 @@ function initializeCountdown() {
         halloween: { date: '2025-10-31T00:00', title: 'Halloween 🎃', emoji: '🎃' },
         christmas: { date: '2025-12-25T00:00', title: 'Christmas 🎄', emoji: '🎁' },
         newyears: { date: '2026-01-01T00:00', title: 'New Year\'s 🎊', emoji: '🎊' },
-        valentines: { date: '2026-02-14T00:00', title: 'Valentine\'s Day 💖', emoji: '💖' }
+        birthday: { date: '2026-01-22T00:00', title: 'My Birthday! 🎂', emoji: '🎂'},
+        valentines: { date: '2026-02-14T00:00', title: 'Valentine\'s Day 💖', emoji: '💖' },
+        chinesenewyears: { date: '2026-02-17T00:00', title: 'Chinese New Year\'s 🐉', emoji: '🐉'},
+        stpatricksday: { date: '2026-03-17T00:00', title: 'St. Patrick\'s Day 🍀', emoji: '🍀'},
+        easter: { date: '2026-04-05T00:00', title: 'Easter 🐇', emoji: '🐇'}
     };
     
     setCountdownBtn.addEventListener('click', () => {
         const selectedDate = new Date(dateInput.value);
         if (selectedDate && selectedDate > new Date()) {
-            const title = `Custom Date`;
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const title = `Countdown to ${selectedDate.toLocaleDateString(undefined, options)}`;
             startCountdown(selectedDate, title);
             localStorage.setItem('countdownDate', selectedDate.toISOString());
             localStorage.setItem('countdownTitle', title);
@@ -169,10 +174,14 @@ function initializeCountdown() {
 
 function triggerHolidayAnimation(holiday, emoji) {
     const animations = {
-        halloween: () => createFallingItems(['🎃', '👻'], 3000),
-        christmas: () => createFallingItems(['🎄', '🎁', '❄️', '⛄', '🔔', '🌟'], 3000),
+        halloween: () => createFallingItems(['🎃', '👻', '🩻', '💀', '🍬', '🍭', '🍫', '🏚️', '🦇', '🍂'], 3000),
+        christmas: () => createFallingItems(['🎄', '🎁', '❄️', '⛄', '🔔', '🌟', '🎅', '🧝', '🍪', '🥛', '🦌'], 3000),
         newyears: () => createConfetti(),
-        valentines: () => createFallingItems(['💖', '💕', '💗', '💓', '💝', '💘', '❤️', '🧡', '💛', '💚', '💙', '💜'], 3000)
+        birthday: () => createFallingItems(['🍰', '🎂', '🎊', '🥳', '🎈', '🎁', '🍷'], 3000),
+        valentines: () => createFallingItems(['💖', '💕', '💗', '💓', '💝', '💘', '❤️', '🧡', '💛', '💚', '💙', '💜'], 3000),
+        chinesenewyears: () => createFallingItems(['🐉', '🐲', '🏮', '🥳', '🍾', '🎇', '🎆', '🥂'], 3000),
+        stpatricksday: () => createFallingItems(['🍀', '💰', '🌈', '☁️', '☘️'], 3000),
+        easter: () => createFallingItems(['🐰', '🐣', '🐥', '💐', '🌸', '🌺', '🍫'], 3000)
     };
     
     if (animations[holiday]) {
