@@ -57,26 +57,194 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Ensure page loads at the top
+    window.scrollTo(0, 0);
+    
+    // Handle back to top button
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Handle image loading states
+    document.querySelectorAll('img').forEach(img => {
+        if (img.complete) {
+            img.setAttribute('loaded', '');
+        } else {
+            img.addEventListener('load', () => {
+                img.setAttribute('loaded', '');
+            });
+        }
+    });
+
+    document.querySelectorAll('.project-card').forEach((card, index) => {
+        card.style.setProperty('--card-index', index);
+    });
+
+    // Initialize Intersection Observer for scroll animations
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const animateOnScroll = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animate-in');
+                animateOnScroll.unobserve(entry.target); // Only animate once
             }
         });
     }, observerOptions);
 
-    const cards = document.querySelectorAll('.interest-card, .project-card');
-    cards.forEach(card => {
+    // Set up profile section animations
+    const profileImage = document.querySelector('.profile-image');
+    if (profileImage) {
+        profileImage.style.opacity = '0';
+        profileImage.style.transform = 'translateX(60px)';
+        profileImage.classList.add('scroll-animate');
+        animateOnScroll.observe(profileImage);
+    }
+
+    const aboutText = document.querySelector('.about-text');
+    if (aboutText) {
+        aboutText.style.opacity = '0';
+        aboutText.style.transform = 'translateX(-60px)';
+        aboutText.classList.add('scroll-animate');
+        animateOnScroll.observe(aboutText);
+    }
+
+    // Set up section title animations
+    const sectionTitles = document.querySelectorAll('.interests h2, .projects h2');
+    sectionTitles.forEach(title => {
+        title.style.opacity = '0';
+        title.style.transform = 'translateY(30px)';
+        title.classList.add('scroll-animate');
+        animateOnScroll.observe(title);
+    });
+
+    // Set up interest card animations
+    const interestCards = document.querySelectorAll('.interest-card');
+    const interestsSection = document.querySelector('.interests');
+    
+    if (interestsSection) {
+        interestsSection.style.opacity = '0';
+        interestsSection.style.transform = 'translateY(30px)';
+        interestsSection.classList.add('scroll-animate');
+        animateOnScroll.observe(interestsSection);
+    }
+
+    interestCards.forEach((card, i) => {
+        // Initially hide the card
         card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
+        card.style.transform = 'translateY(50px)';
+        card.classList.add('scroll-animate');
+        card.style.transitionDelay = `${400 + i * 200}ms`;
+        
+        // Initially hide all card contents
+        const icon = card.querySelector('.icon');
+        const title = card.querySelector('h3');
+        const description = card.querySelector('p');
+
+        if (icon) {
+            icon.style.opacity = '0';
+            icon.style.transform = 'translateY(20px)';
+            icon.classList.add('scroll-animate');
+            icon.style.transitionDelay = `${500 + i * 200}ms`;
+        }
+
+        if (title) {
+            title.style.opacity = '0';
+            title.style.transform = 'translateY(20px)';
+            title.classList.add('scroll-animate');
+            title.style.transitionDelay = `${600 + i * 200}ms`;
+        }
+
+        if (description) {
+            description.style.opacity = '0';
+            description.style.transform = 'translateY(20px)';
+            description.classList.add('scroll-animate');
+            description.style.transitionDelay = `${700 + i * 200}ms`;
+        }
+
+        // Observe the card
+        animateOnScroll.observe(card);
+        
+        // Observe card contents
+        if (icon) animateOnScroll.observe(icon);
+        if (title) animateOnScroll.observe(title);
+        if (description) animateOnScroll.observe(description);
+    });
+
+    // Set up project card animations
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card, i) => {
+        // Animate the card container
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.classList.add('scroll-animate');
+        card.style.transitionDelay = `${200 + i * 120}ms`;
+        animateOnScroll.observe(card);
+
+        // Animate card contents
+        const image = card.querySelector('.project-image');
+        const content = card.querySelector('.project-content');
+        const title = content?.querySelector('h3');
+        const description = content?.querySelector('p');
+        const tech = card.querySelector('.project-tech');
+        const link = card.querySelector('.project-link');
+
+        if (image) {
+            image.style.opacity = '0';
+            image.style.transform = 'translateY(20px)';
+            image.classList.add('scroll-animate');
+            image.style.transitionDelay = `${300 + i * 120}ms`;
+            animateOnScroll.observe(image);
+        }
+
+        if (title) {
+            title.style.opacity = '0';
+            title.style.transform = 'translateY(20px)';
+            title.classList.add('scroll-animate');
+            title.style.transitionDelay = `${400 + i * 120}ms`;
+            animateOnScroll.observe(title);
+        }
+
+        if (description) {
+            description.style.opacity = '0';
+            description.style.transform = 'translateY(20px)';
+            description.classList.add('scroll-animate');
+            description.style.transitionDelay = `${500 + i * 120}ms`;
+            animateOnScroll.observe(description);
+        }
+
+        if (tech) {
+            tech.style.opacity = '0';
+            tech.style.transform = 'translateY(20px)';
+            tech.classList.add('scroll-animate');
+            tech.style.transitionDelay = `${600 + i * 120}ms`;
+            animateOnScroll.observe(tech);
+        }
+
+        if (link) {
+            link.style.opacity = '0';
+            link.style.transform = 'translateY(20px)';
+            link.classList.add('scroll-animate');
+            link.style.transitionDelay = `${700 + i * 120}ms`;
+            animateOnScroll.observe(link);
+        }
     });
 
     initializeCountdown();
@@ -306,19 +474,67 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const heroTitle = document.querySelector('.hero-content h1');
     if (heroTitle) {
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        let i = 0;
+        heroTitle.innerHTML = '<span class="typing-text"></span><span class="cursor">|</span>';
+        const typingText = heroTitle.querySelector('.typing-text');
+        const cursor = heroTitle.querySelector('.cursor');
         
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+        const prompts = [
+            "hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+            "it's me",
+            "hello",
+            "welcome to this thing",
+            "cats are great",
+            "do emojis work here? 🎃",
+            "aofhaoijgwijgeoinfad"
+        ];
+        
+        let currentPromptIndex = 0;
+        let isDeleting = false;
+        let charIndex = 0;
+        let typingDelay = 100;
+        let deletingDelay = 50;
+        let newTextDelay = 2000; // Delay before starting to delete
+        let waitBeforeDelete = true;
+
+        function type() {
+            const currentText = prompts[currentPromptIndex];
+            
+            if (isDeleting) {
+                // Deleting text
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    currentPromptIndex = (currentPromptIndex + 1) % prompts.length;
+                    setTimeout(type, typingDelay);
+                } else {
+                    setTimeout(type, deletingDelay);
+                }
+            } else {
+                // Typing text
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                
+                if (charIndex === currentText.length) {
+                    // Always wait before deleting
+                    setTimeout(() => {
+                        isDeleting = true;
+                        type();
+                    }, newTextDelay);
+                } else {
+                    setTimeout(type, typingDelay);
+                }
             }
-        };
+        }
         
-        setTimeout(typeWriter, 1000);
+        // Start the typing animation
+        setTimeout(type, 1000);
+
+        // Add blinking cursor animation
+        setInterval(() => {
+            cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        }, 530);
     }
 
     const interestCards = document.querySelectorAll('.interest-card');

@@ -1,61 +1,94 @@
+/* Last.fm widget rounded corners */
 .lastfm-widget {
     border-radius: 16px;
     overflow: hidden;
-    background: transparent;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-    opacity: 0;
-    transform: translateX(40px);
-    animation: fadeInRight 1s ease-out forwards 0.5s;
 }
 .lastfm-widget img {
     border-radius: 16px;
     display: block;
 }
-
-.profile-image .image-placeholder img {
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    border: none;
-    opacity: 0;
-    transform: translateX(40px);
-    animation: fadeInRight 1s ease-out forwards;
-}
-
-.about-text {
-    opacity: 0;
-    transform: translateX(-40px);
-    animation: fadeInLeft 1s ease-out forwards 0.2s;
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom text selection color */
+::selection {
+    background: rgba(64, 224, 208, 0.3);
+    color: white;
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(64, 224, 208, 0.9);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: rgba(64, 224, 208, 1);
+    transform: translateY(-5px);
+}
+
+/* Image loading state */
+img {
+    transition: opacity 0.3s ease;
+}
+
+img:not([loaded]) {
+    opacity: 0;
+}
+
+img[loaded] {
+    opacity: 1;
+}
+
+/* Scroll animation classes */
+.scroll-animate {
+    transition: opacity 1.2s cubic-bezier(.4,2,.3,1), transform 1.2s cubic-bezier(.4,2,.3,1);
+    will-change: transform, opacity;
+}
+
+.animate-in {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+
+.interest-card.animate-in {
+    animation: floatHorizontal 6s ease-in-out infinite;
 }
 
 body {
@@ -179,11 +212,23 @@ nav .container {
     color: white;
     text-decoration: none;
     font-weight: 300;
-    transition: opacity 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
 }
 
-.nav-links a:hover {
-    opacity: 0.8;
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #40E0D0;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .burger {
@@ -221,6 +266,11 @@ nav .container {
     font-size: 3rem;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease;
+}
+
+.hero-content h1 .cursor {
+    font-weight: 100;
+    color: #40E0D0;
 }
 
 .hero-content h2 {
@@ -277,6 +327,8 @@ h2 {
     text-align: center;
     margin-bottom: 3rem;
     color: #e2e8f0;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .countdown-section {
@@ -465,7 +517,6 @@ h2 {
 }
 
 .image-placeholder {
-    background: #e2e8f0;
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
@@ -476,7 +527,8 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px dashed #cbd5e0;
+    border: none;
+    background: none;
 }
 
 .image-placeholder p {
@@ -500,15 +552,45 @@ h2 {
     backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.interest-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    background: inherit;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    z-index: -1;
 }
 
 .interest-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-15px);
+    animation-play-state: paused;
+}
+
+.interest-card:hover::before {
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes floatHorizontal {
+    0% {
+        transform: translateX(0) translateZ(0);
+    }
+    50% {
+        transform: translateX(-5px) translateZ(0);
+    }
+    100% {
+        transform: translateX(0) translateZ(0);
+    }
 }
 
 .interest-card .icon {
@@ -543,15 +625,35 @@ h2 {
     background: rgba(45, 55, 72, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    animation: floatHorizontal 7s ease-in-out infinite;
+    animation-delay: calc(var(--card-index, 0) * -2s);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    background: inherit;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    z-index: -1;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-15px);
+    animation-play-state: paused;
+}
+
+.project-card:hover::before {
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
 }
 
 .project-image {
@@ -768,6 +870,13 @@ footer p {
 }
 
 html {
+    scroll-behavior: smooth;
+}
+
+/* Custom text selection color */
+::selection {
+    background: rgba(64, 224, 208, 0.3);
+    color: white;
     scroll-behavior: smooth;
 }
 
