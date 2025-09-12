@@ -1,3 +1,57 @@
+.lastfm-widget {
+    border-radius: 16px;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    opacity: 0;
+    transform: translateX(40px);
+    animation: fadeInRight 1s ease-out forwards 0.5s;
+}
+.lastfm-widget img {
+    border-radius: 16px;
+    display: block;
+}
+
+.profile-image .image-placeholder img {
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border: none;
+    opacity: 0;
+    transform: translateX(40px);
+    animation: fadeInRight 1s ease-out forwards;
+}
+
+.about-text {
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: fadeInLeft 1s ease-out forwards 0.2s;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 * {
     margin: 0;
     padding: 0;
