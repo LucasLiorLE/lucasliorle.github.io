@@ -44,7 +44,27 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
+    @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}ation: none;
     opacity: 0;
     transform: translateY(100px);
     transition: all 0.3s ease;
@@ -99,6 +119,8 @@ body {
     color: #e2e8f0;
     background: #1a202c;
     overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
 }
 
 .container {
@@ -237,26 +259,32 @@ nav .container {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
 }
 
 .burger div {
     width: 25px;
-    height: 3px;
+    height: 2px;
     background-color: white;
-    margin: 3px 0;
-    transition: 0.3s;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
 .toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
+    transform: rotate(-45deg) translate(-4px, 6px);
+    width: 28px;
 }
 
 .toggle .line2 {
     opacity: 0;
+    transform: translateX(-10px);
 }
 
 .toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
+    transform: rotate(45deg) translate(-4px, -6px);
+    width: 28px;
 }
 
 .hero-content {
@@ -503,7 +531,7 @@ h2 {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 3rem;
-    align-items: center;
+    align-items: start;
 }
 
 .about-text p {
@@ -516,6 +544,66 @@ h2 {
 .profile-image {
     margin: 0 auto;
     max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .burger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: -100vh;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(26, 32, 44, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s ease-in-out;
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .nav-links.nav-active {
+        top: 0;
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-links.nav-active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-text {
+        order: 2;
+    }
+
+    .profile-image {
+        order: 1;
+        margin-bottom: 3rem;
+    }
+
+    .image-placeholder {
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .interests {
+        padding-top: 4rem;
+    }
 }
 
 .image-placeholder {
@@ -543,12 +631,38 @@ h2 {
 .interests {
     background: #1a202c;
     color: white;
+    position: relative;
+    z-index: 1;
+    margin-top: 2rem;
 }
 
 .interests-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .interests {
+        margin-top: 4rem;
+        padding-top: 2rem;
+    }
+    
+    .interests-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .interests {
+        margin-top: 3rem;
+    }
+    
+    .interests-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 .interest-card {
