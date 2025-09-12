@@ -2,16 +2,18 @@
 .lastfm-widget {
     border-radius: 16px;
     overflow: hidden;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem;
+    max-width: 100%;
+    margin: 1rem 0;
 }
 .lastfm-widget img {
     border-radius: 16px;
     display: block;
+    max-width: 100%;
+    height: auto;
 }
 * {
     margin: 0;
@@ -512,23 +514,25 @@ h2 {
 }
 
 .profile-image {
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 .image-placeholder {
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    color: #a0aec0;
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border: none;
-    background: none;
+    gap: 1rem;
 }
 
 .image-placeholder p {
