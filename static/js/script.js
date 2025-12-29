@@ -259,15 +259,9 @@ function initializeCountdown() {
     
     let countdownInterval;
     
-    const savedCountdown = localStorage.getItem('countdownDate');
-    const savedTitle = localStorage.getItem('countdownTitle');
-    if (savedCountdown && savedTitle) {
-        startCountdown(new Date(savedCountdown), savedTitle);
-    }
-    
     const holidays = {
-        halloween: { date: '2025-10-31T00:00', title: 'Halloween 🎃', emoji: '🎃' },
-        christmas: { date: '2025-12-25T00:00', title: 'Christmas 🎄', emoji: '🎁' },
+        halloween: { date: '2026-10-31T00:00', title: 'Halloween 🎃', emoji: '🎃' },
+        christmas: { date: '2026-12-25T00:00', title: 'Christmas 🎄', emoji: '🎁' },
         newyears: { date: '2026-01-01T00:00', title: 'New Year\'s 🎊', emoji: '🎊' },
         birthday: { date: '2026-01-22T00:00', title: 'My Birthday! 🎂', emoji: '🎂'},
         valentines: { date: '2026-02-14T00:00', title: 'Valentine\'s Day 💖', emoji: '💖' },
@@ -275,6 +269,35 @@ function initializeCountdown() {
         stpatricksday: { date: '2026-03-17T00:00', title: 'St. Patrick\'s Day 🍀', emoji: '🍀'},
         easter: { date: '2026-04-05T00:00', title: 'Easter 🐇', emoji: '🐇'}
     };
+    
+    const savedCountdown = localStorage.getItem('countdownDate');
+    const savedTitle = localStorage.getItem('countdownTitle');
+    if (savedCountdown && savedTitle) {
+        startCountdown(new Date(savedCountdown), savedTitle);
+    } else {
+        const now = new Date();
+        let nearestHoliday = null;
+        let nearestDate = null;
+        let closestDifference = Infinity;
+        
+        for (const [key, holidayData] of Object.entries(holidays)) {
+            const holidayDate = new Date(holidayData.date);
+            const difference = holidayDate - now;
+            
+            if (difference > 0 && difference < closestDifference) {
+                closestDifference = difference;
+                nearestHoliday = key;
+                nearestDate = holidayDate;
+            }
+        }
+        
+        if (nearestHoliday && nearestDate) {
+            const holidayData = holidays[nearestHoliday];
+            startCountdown(nearestDate, holidayData.title);
+            localStorage.setItem('countdownDate', nearestDate.toISOString());
+            localStorage.setItem('countdownTitle', holidayData.title);
+        }
+    }
     
     setCountdownBtn.addEventListener('click', () => {
         const selectedDate = new Date(dateInput.value);
@@ -538,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const interestCards = document.querySelectorAll('.interest-card');
-    const colors = ['#e74c3c', '#9b59b6', '#3498db', '#e67e22', '#1abc9c', '#f39c12', '#34495e', '#e91e63'];
+    const colors = ['#e74c3c', '#007bff', '#f5f5dc', '#6a0dad', '#7f8c8d', '#2ecc71', '#34495e', '#e91e63'];
     
     interestCards.forEach(card => {
         const icon = card.querySelector('.icon');

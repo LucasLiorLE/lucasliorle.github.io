@@ -111,7 +111,6 @@ html {
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .back-to-top.visible {
@@ -425,7 +424,7 @@ h2 {
     padding: 0.75rem;
     margin: 0.5rem;
     border-radius: 10px;
-    border: 2px solid rgba(96, 165, 250, 0.3);
+    border: none;
     background: rgba(45, 55, 72, 0.8);
     color: white;
     font-size: 1rem;
@@ -434,7 +433,7 @@ h2 {
 .countdown-input input[type="datetime-local"] {
     background: rgba(45, 55, 72, 0.9);
     color: white;
-    border: 2px solid rgba(96, 165, 250, 0.3);
+    border: none;
     padding: 0.75rem;
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
@@ -443,13 +442,12 @@ h2 {
 
 .countdown-input input[type="datetime-local"]:focus {
     outline: none;
-    border-color: #60a5fa;
-    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+    box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.2);
     background: rgba(45, 55, 72, 1);
 }
 
 .countdown-input input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-    background-color: #60a5fa;
+    background-color: rgba(64, 224, 208, 0.7);
     border-radius: 3px;
     cursor: pointer;
     padding: 2px;
@@ -481,16 +479,18 @@ h2 {
     margin: 0.5rem;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(45deg, #60a5fa, #3b82f6);
+    background: linear-gradient(135deg, rgba(64, 224, 208, 0.9), rgba(16, 185, 129, 0.9));
     color: white;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid rgba(64, 224, 208, 0.3);
 }
 
 .countdown-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(96, 165, 250, 0.4);
+    box-shadow: 0 10px 20px rgba(64, 224, 208, 0.3);
+    background: linear-gradient(135deg, rgba(64, 224, 208, 1), rgba(16, 185, 129, 1));
 }
 
 .preset-dates h3 {
@@ -514,11 +514,10 @@ h2 {
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid rgba(96, 165, 250, 0.3);
 }
 
 .preset-btn:hover {
-    background: rgba(96, 165, 250, 0.2);
+    background: rgba(64, 224, 208, 0.2);
     transform: translateY(-2px);
 }
 
@@ -526,7 +525,7 @@ h2 {
     background: rgba(45, 55, 72, 0.6);
     padding: 2rem;
     border-radius: 20px;
-    border: 2px solid rgba(96, 165, 250, 0.3);
+    border: none;
     margin-top: 2rem;
 }
 
@@ -540,17 +539,21 @@ h2 {
 
 .time-unit {
     text-align: center;
-    background: rgba(96, 165, 250, 0.1);
+    background: linear-gradient(135deg, rgba(64, 224, 208, 0.1), rgba(16, 185, 129, 0.1));
     padding: 1rem;
     border-radius: 15px;
     min-width: 100px;
+    border: none;
 }
 
 .time-unit span {
     display: block;
     font-size: 2rem;
     font-weight: bold;
-    color: #60a5fa;
+    background: linear-gradient(135deg, #40E0D0, #10B981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .time-unit label {
@@ -912,13 +915,6 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    /* NOTE: removed duplicate/conflicting .nav-links rules here to avoid
-       inconsistent behavior across mobile browsers (a thin/visible side bar
-       resulted from multiple position/transform rules on the same element).
-       Mobile nav is handled earlier in the file using a transform-based
-       slide-in. If you intend a right-side drawer instead, we can convert
-       the primary mobile rules to that approach—let me know. */
-
     .burger {
         display: flex;
     }
@@ -994,8 +990,23 @@ footer p {
     }
 
     .image-placeholder {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .lastfm-widget {
+        width: 100%;
+        max-width: 100%;
+        margin: 1rem 0;
+        padding: 0;
+    }
+
+    .lastfm-widget img {
+        width: 100%;
+        height: auto;
     }
 }
 
@@ -1010,9 +1021,12 @@ html {
     scroll-behavior: smooth;
 }
 
-.interest-card:nth-child(1) .icon { color: #e74c3c; }
-.interest-card:nth-child(2) .icon { color: #9b59b6; }
-.interest-card:nth-child(3) .icon { color: #3498db; }
-.interest-card:nth-child(4) .icon { color: #e67e22; }
-.interest-card:nth-child(5) .icon { color: #1abc9c; }
-.interest-card:nth-child(6) .icon { color: #f39c12; }
+.interest-card:nth-child(1) .icon { color: #e74c3c; } /* drawing */
+.interest-card:nth-child(2) .icon { color: #007bff; } /* programming */
+.interest-card:nth-child(3) .icon { color: #f5f5dc; } /* reading */
+.interest-card:nth-child(4) .icon { color: #9a0dad; } /* music */
+.interest-card:nth-child(5) .icon { color: #1abc9c; } /* gardening */
+.interest-card:nth-child(6) .icon { color: #7f8c8d; } /* engineering */
+.interest-card:nth-child(7) .icon { color: #2ecc71; } /* chemistry */
+.interest-card:nth-child(8) .icon { color: #a3d2ca; } /* sleeping */
+.interest-card:nth-child(9) .icon { color: #f1c40f; } /* procrastinating */
