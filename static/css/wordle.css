@@ -1,0 +1,257 @@
+:root {
+    --bg: #121213;
+    --panel: #1a1a1b;
+    --text: #ffffff;
+    --muted: #a1a1a4;
+    --border: #3a3a3c;
+    --yellow: #b59f3b;
+    --green: #538d4e;
+    --gray: #3a3a3c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 24px;
+}
+
+.wordle-app {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+}
+
+.top-bar h1 {
+    margin: 0;
+    letter-spacing: 0.08em;
+    font-size: 1.6rem;
+}
+
+.close-btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.controls {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 18px;
+}
+
+.controls label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+#startWord {
+    flex: 1;
+    min-width: 160px;
+    text-transform: lowercase;
+    background: #121213;
+    border: 2px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 1rem;
+}
+
+#setWordBtn,
+#clearWordsBtn {
+    height: 40px;
+    border: 1px solid var(--border);
+    background: #2a2a2b;
+    color: var(--text);
+    border-radius: 6px;
+    padding: 0 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#setWordBtn:hover,
+#clearWordsBtn:hover {
+    background: #3a3a3b;
+}
+
+#clearWordsBtn {
+    background: #4a2a2a;
+}
+
+#clearWordsBtn:hover {
+    background: #5a3a3a;
+}
+
+.help-text,
+.status {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 18px;
+    align-items: start;
+}
+
+.board-panel,
+.suggestions-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.tile-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.word-row {
+    display: grid;
+    grid-template-columns: repeat(5, 62px);
+    gap: 8px;
+}
+
+.word-row-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.remove-word-btn {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: all 0.2s;
+}
+
+.remove-word-btn:hover {
+    background: #4a2a2a;
+    color: var(--text);
+    border-color: #8a4a4a;
+}
+
+.tile {
+    width: 62px;
+    height: 62px;
+    border: 2px solid var(--border);
+    background: #121213;
+    color: var(--text);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile.state-present {
+    background: var(--yellow);
+    border-color: var(--yellow);
+}
+
+.tile.state-correct {
+    background: var(--green);
+    border-color: var(--green);
+}
+
+.tile.state-absent {
+    background: var(--gray);
+    border-color: var(--gray);
+}
+
+.suggestions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+}
+
+.suggestions-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.suggestions-header span {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.suggestion-list {
+    margin: 0;
+    padding-left: 22px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.suggestion-list li {
+    padding: 6px 8px;
+    font-family: "Courier New", Courier, monospace;
+    text-transform: lowercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s;
+    margin: 2px 0;
+}
+
+.suggestion-list li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--green);
+}
+
+@media (max-width: 860px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .suggestions-panel {
+        max-width: 480px;
+    }
+}

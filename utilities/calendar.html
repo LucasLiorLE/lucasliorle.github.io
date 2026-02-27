@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown thingy</title>
+    <link rel="stylesheet" href="../static/css/calendar.css">
+</head>
+<body>
+    <div class="retro-window">
+        <div class="window-title">
+            <span class="title-text">Calendar.exe</span>
+            <div class="title-buttons">
+                <button class="title-btn minimize">_</button>
+                <button class="title-btn maximize">□</button>
+                <button class="title-btn close">×</button>
+            </div>
+        </div>
+        
+        <div class="window-contents">
+            <div class="countdown-input-section">
+                <fieldset class="retro-fieldset">
+                    <legend>Select Date</legend>
+                    <div class="input-group">
+                        <label for="dateInput">📅 Choose a date:</label>
+                        <input type="datetime-local" id="dateInput" class="retro-input" />
+                    </div>
+                    <div class="button-group">
+                        <button id="setCountdown" class="retro-button">Set Countdown</button>
+                        <button id="clearCountdown" class="retro-button">Clear</button>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="preset-dates-section">
+                <fieldset class="retro-fieldset">
+                    <legend>Holiday Shortcuts</legend>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-holiday="halloween">Halloween 🎃</button>
+                        <button class="preset-btn" data-holiday="christmas">Christmas 🎄</button>
+                        <button class="preset-btn" data-holiday="newyears">New Year's 🎊</button>
+                        <button class="preset-btn" data-holiday="birthday">My Birthday! 🎂</button>
+                        <button class="preset-btn" data-holiday="chinesenewyears">Chinese NY 🐉</button>
+                        <button class="preset-btn" data-holiday="valentines">Valentine's 💖</button>
+                        <button class="preset-btn" data-holiday="stpatricksday">St. Patrick's 🍀</button>
+                        <button class="preset-btn" data-holiday="easter">Easter 🐇</button>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="countdown-display-section" id="countdownDisplay" style="display: none;">
+                <fieldset class="retro-fieldset">
+                    <legend id="countdownTitle">Countdown to...</legend>
+                    <div class="countdown-timer">
+                        <div class="time-unit">
+                            <div class="time-display">
+                                <span id="days">0</span>
+                            </div>
+                            <label>Days</label>
+                        </div>
+                        <div class="separator">:</div>
+                        <div class="time-unit">
+                            <div class="time-display">
+                                <span id="hours">0</span>
+                            </div>
+                            <label>Hours</label>
+                        </div>
+                        <div class="separator">:</div>
+                        <div class="time-unit">
+                            <div class="time-display">
+                                <span id="minutes">0</span>
+                            </div>
+                            <label>Minutes</label>
+                        </div>
+                        <div class="separator">:</div>
+                        <div class="time-unit">
+                            <div class="time-display">
+                                <span id="seconds">0</span>
+                            </div>
+                            <label>Seconds</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="window-status-bar">
+            <span class="status-text">Ready</span>
+        </div>
+    </div>
+
+    <script src="../static/js/calendar.js"></script>
+</body>
+</html>

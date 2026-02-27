@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Solver</title>
+    <link rel="stylesheet" href="../static/css/wordle.css">
+</head>
+<body>
+    <main class="wordle-app">
+        <header class="top-bar">
+            <h1>WORDLE SOLVER</h1>
+            <button class="close-btn" onclick="window.location.href='../index.html'" aria-label="Back to home">✕</button>
+        </header>
+
+        <section class="controls">
+            <label for="startWord">Your guesses</label>
+            <div class="input-row">
+                <input id="startWord" autocomplete="off" spellcheck="false" placeholder="Type 5-letter word and press Enter">
+                <button id="setWordBtn">Add</button>
+                <button id="clearWordsBtn" style="display: none;">Clear All</button>
+            </div>
+            <p class="help-text">Type a word and press Enter or click Add. Click tiles to cycle: gray → yellow → green.</p>
+            <p class="status" id="statusText">Loading word list…</p>
+        </section>
+
+        <section class="content-grid">
+            <div class="board-panel">
+                <div id="tileRow" class="tile-row" aria-label="Word tiles"></div>
+            </div>
+
+            <aside class="suggestions-panel">
+                <div class="suggestions-header">
+                    <h2>Suggestions</h2>
+                    <span id="resultCount">0 matches</span>
+                </div>
+                <ol id="suggestionList" class="suggestion-list"></ol>
+            </aside>
+        </section>
+    </main>
+
+    <script src="../static/js/wordle.js"></script>
+</body>
+</html>

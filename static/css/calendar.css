@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #008080 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="2" height="2" fill="%23006666"/><rect x="2" y="2" width="2" height="2" fill="%23006666"/></svg>');
+    font-family: "MS Sans Serif", "Microsoft Sans Serif", Tahoma, sans-serif;
+    font-size: 11px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.retro-window {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    box-shadow: 1px 1px 0 #ffffff inset, 2px 2px 0 #dfdfdf inset, 1px 1px 0 #000000, 2px 2px 0 #808080;
+    max-width: 600px;
+    width: 100%;
+    font-family: inherit;
+}
+
+.window-title {
+    background: linear-gradient(90deg, #000080 0%, #1084d7 100%);
+    color: white;
+    padding: 2px 2px 2px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+    font-weight: bold;
+    font-size: 11px;
+    user-select: none;
+}
+
+.title-text {
+    flex: 1;
+}
+
+.title-buttons {
+    display: flex;
+    gap: 2px;
+}
+
+.title-btn {
+    width: 16px;
+    height: 14px;
+    padding: 0;
+    border: 1px solid;
+    border-color: #dfdfdf #000000 #000000 #dfdfdf;
+    background: #c0c0c0;
+    color: black;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.title-btn:active {
+    border-color: #000000 #dfdfdf #dfdfdf #000000;
+}
+
+.window-contents {
+    padding: 4px;
+    background: #c0c0c0;
+}
+
+.retro-fieldset {
+    border: 2px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    padding: 8px;
+    margin-bottom: 8px;
+    background: #c0c0c0;
+}
+
+.retro-fieldset legend {
+    background: #c0c0c0;
+    padding: 2px 4px;
+    font-weight: bold;
+    color: #000;
+}
+
+.countdown-input-section,
+.preset-dates-section,
+.countdown-display-section {
+    margin-bottom: 8px;
+}
+
+.input-group {
+    margin-bottom: 8px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.retro-input {
+    width: 100%;
+    padding: 3px 4px;
+    border: 2px solid;
+    border-color: #808080 #dfdfdf #dfdfdf #808080;
+    background: white;
+    color: black;
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.retro-input:focus {
+    outline: 1px dotted #000;
+    outline-offset: -4px;
+}
+
+.button-group {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    justify-content: flex-end;
+}
+
+.retro-button {
+    padding: 4px 12px;
+    border: 2px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    background: #c0c0c0;
+    color: black;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    min-width: 75px;
+}
+
+.retro-button:hover {
+    border-color: #ffffff #000000 #000000 #ffffff;
+}
+
+.retro-button:active {
+    border-color: #808080 #dfdfdf #dfdfdf #808080;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #000000;
+}
+
+.preset-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 4px;
+}
+
+.preset-btn {
+    padding: 4px 8px;
+    border: 2px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    background: #c0c0c0;
+    color: black;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.preset-btn:hover {
+    border-color: #ffffff #000000 #000000 #ffffff;
+}
+
+.preset-btn:active {
+    border-color: #808080 #dfdfdf #dfdfdf #808080;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #000000;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    text-align: center;
+    background: #c0c0c0;
+}
+
+.time-display {
+    background: white;
+    border: 2px solid;
+    border-color: #808080 #dfdfdf #dfdfdf #808080;
+    padding: 8px 12px;
+    min-width: 60px;
+    margin-bottom: 4px;
+}
+
+.time-unit span {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    font-family: "Courier New", monospace;
+    letter-spacing: 2px;
+}
+
+.time-unit label {
+    font-size: 10px;
+    font-weight: bold;
+    color: #000;
+}
+
+.separator {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 16px;
+    height: 30px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.window-status-bar {
+    background: linear-gradient(90deg, #c0c0c0 0%, #c0c0c0 100%);
+    border-top: 1px solid #dfdfdf;
+    padding: 2px 2px;
+    display: flex;
+}
+
+.status-text {
+    padding: 2px 4px;
+    font-size: 11px;
+    color: #000;
+    flex: 1;
+    border: 1px solid;
+    border-color: #808080 #dfdfdf #dfdfdf #808080;
+}
+
+/* Animations */
+@keyframes holidayFall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .retro-window {
+        max-width: 100%;
+    }
+    
+    .preset-buttons {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .countdown-timer {
+        gap: 4px;
+    }
+    
+    .time-display {
+        min-width: 50px;
+        padding: 6px 8px;
+    }
+    
+    .time-unit span {
+        font-size: 20px;
+    }
+}
