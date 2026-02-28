@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.transform = 'translateY(50px)';
         card.classList.add('scroll-animate');
         card.style.transitionDelay = `${400 + i * 200}ms`;
-        
+
         // Initially hide all card contents
         const icon = card.querySelector('.icon');
         const title = card.querySelector('h3');
@@ -169,7 +169,17 @@ document.addEventListener('DOMContentLoaded', function() {
             title.style.opacity = '0';
             title.style.transform = 'translateY(20px)';
             title.classList.add('scroll-animate');
-            title.style.transitionDelay = `${600 + i * 200}ms`;
+            // Remove transitionDelay and transition for h3 to avoid interfering with color transition
+            title.style.transitionDelay = '0s';
+            title.style.transition = 'none';
+            // Listen for scroll-in animation end to restore CSS transition
+            title.addEventListener('transitionend', function handler(e) {
+                if (e.propertyName === 'opacity' && title.classList.contains('animate-in')) {
+                    title.style.transition = '';
+                    title.style.transitionDelay = '';
+                    title.removeEventListener('transitionend', handler);
+                }
+            });
         }
 
         if (description) {
@@ -220,6 +230,14 @@ document.addEventListener('DOMContentLoaded', function() {
             title.classList.add('scroll-animate');
             title.style.transitionDelay = `${400 + i * 120}ms`;
             animateOnScroll.observe(title);
+            // Listen for scroll-in animation end to restore CSS transition
+            title.addEventListener('transitionend', function handler(e) {
+                if (e.propertyName === 'opacity' && title.classList.contains('animate-in')) {
+                    title.style.transition = '';
+                    title.style.transitionDelay = '';
+                    title.removeEventListener('transitionend', handler);
+                }
+            });
         }
 
         if (description) {

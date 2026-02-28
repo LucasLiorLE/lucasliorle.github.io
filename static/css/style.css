@@ -138,7 +138,7 @@ img[loaded] {
 
 /* Scroll animation classes */
 .scroll-animate {
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease;
     will-change: transform, opacity;
 }
 
@@ -159,6 +159,27 @@ body {
     position: relative;
 }
 
+/* Hide scrollbar while keeping functionality */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(96, 165, 250, 0.6);
+    border-radius: 5px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(96, 165, 250, 0.8);
+    background-clip: padding-box;
+}
+
 .container {
     max-width: 1200px;
     width: 100%;
@@ -176,6 +197,28 @@ body {
     overflow: hidden;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    --wave1-0: 40%;
+    --wave1-10: 44%;
+    --wave1-20: 47%;
+    --wave1-30: 45%;
+    --wave1-40: 42%;
+    --wave1-50: 40%;
+    --wave1-60: 38%;
+    --wave1-70: 35%;
+    --wave1-80: 33%;
+    --wave1-90: 36%;
+    --wave1-100: 40%;
+    --wave2-0: 50%;
+    --wave2-10: 54%;
+    --wave2-20: 56%;
+    --wave2-30: 53%;
+    --wave2-40: 50%;
+    --wave2-50: 47%;
+    --wave2-60: 45%;
+    --wave2-70: 43%;
+    --wave2-80: 46%;
+    --wave2-90: 48%;
+    --wave2-100: 50%;
 }
 
 .hero::before {
@@ -185,7 +228,22 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.18), transparent 45%);
+    background: linear-gradient(180deg, rgba(96, 165, 250, 0.16), rgba(96, 165, 250, 0.04));
+    clip-path: polygon(
+        0% var(--wave1-0),
+        10% var(--wave1-10),
+        20% var(--wave1-20),
+        30% var(--wave1-30),
+        40% var(--wave1-40),
+        50% var(--wave1-50),
+        60% var(--wave1-60),
+        70% var(--wave1-70),
+        80% var(--wave1-80),
+        90% var(--wave1-90),
+        100% var(--wave1-100),
+        100% 100%,
+        0% 100%
+    );
     pointer-events: none;
 }
 
@@ -196,7 +254,22 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 80% 30%, rgba(16, 185, 129, 0.14), transparent 42%);
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.14), rgba(16, 185, 129, 0.03));
+    clip-path: polygon(
+        0% var(--wave2-0),
+        10% var(--wave2-10),
+        20% var(--wave2-20),
+        30% var(--wave2-30),
+        40% var(--wave2-40),
+        50% var(--wave2-50),
+        60% var(--wave2-60),
+        70% var(--wave2-70),
+        80% var(--wave2-80),
+        90% var(--wave2-90),
+        100% var(--wave2-100),
+        100% 100%,
+        0% 100%
+    );
     pointer-events: none;
 }
 
@@ -320,23 +393,31 @@ nav .container {
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background: linear-gradient(45deg, #7209b7, #533483);
+    background: #1e293b;
     color: white;
     text-decoration: none;
     border-radius: 50px;
-    border: 2px solid rgba(120, 219, 226, 0.3);
-    transition: background 0.2s ease, box-shadow 0.2s ease;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(114, 9, 183, 0.3);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .cta-button:hover {
-    background: linear-gradient(45deg, #533483, #7209b7);
-    box-shadow: 0 6px 20px rgba(114, 9, 183, 0.4);
+    background: #1e293b;
+    border-color: rgba(96, 165, 250, 0.6);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
 }
 
 section {
     padding: 5rem 0;
+}
+
+h2 h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #e2e8f0;
 }
 
 h2 {
@@ -344,8 +425,13 @@ h2 {
     text-align: center;
     margin-bottom: 3rem;
     color: #e2e8f0;
-    opacity: 0;
-    transform: translateY(30px);
+}
+
+h3 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #e2e8f0;
 }
 
 .about {
@@ -479,19 +565,18 @@ h2 {
 
 .interest-card {
     position: relative;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+    background: #1e293b;
     border: 1px solid rgba(96, 165, 250, 0.2);
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
     overflow: hidden;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .interest-card:hover {
-    transform: translateY(-4px);
     border-color: rgba(96, 165, 250, 0.4);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .interest-card .icon {
@@ -511,6 +596,14 @@ h2 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: #e2e8f0;
+    transition: color 0.1s ease;
+    transition-delay: 0s;
+    will-change: color;
+}
+
+.interest-card:hover h3 {
+    color: #60a5fa;
+    transition-delay: 0s;
 }
 
 .interest-card p {
@@ -531,17 +624,16 @@ h2 {
 
 .project-card {
     position: relative;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+    background: #1e293b;
     border: 1px solid rgba(96, 165, 250, 0.2);
     border-radius: 12px;
     overflow: hidden;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
     border-color: rgba(96, 165, 250, 0.4);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .project-image {
@@ -570,6 +662,14 @@ h2 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: #e2e8f0;
+    transition: color 0.1s linear !important;
+    transition-delay: 0s !important;
+    will-change: color;
+}
+
+.project-card:hover .project-content h3 {
+    color: #60a5fa;
+    transition-delay: 0s !important;
 }
 
 .project-content p {
@@ -638,20 +738,19 @@ h2 {
 
 .utility-card {
     position: relative;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+    background: #1e293b;
     border: 1px solid rgba(96, 165, 250, 0.2);
     border-radius: 12px;
     padding: 2rem;
     text-decoration: none;
     color: white;
     overflow: hidden;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .utility-card:hover {
-    transform: translateY(-4px);
     border-color: rgba(96, 165, 250, 0.4);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .utility-image {
@@ -677,9 +776,9 @@ h2 {
     border-radius: 12px;
     background: linear-gradient(135deg, #60a5fa, #8b5cf6);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
     z-index: -1;
-    filter: blur(10px);
+    filter: blur(4px);
 }
 
 .utility-card:hover .utility-image {
@@ -690,7 +789,7 @@ h2 {
 }
 
 .utility-card:hover .utility-image::before {
-    opacity: 0.5;
+    opacity: 0.2;
 }
 
 .utility-image i {
@@ -704,7 +803,7 @@ h2 {
 
 .utility-card:hover .utility-image i {
     transform: scale(1.1);
-    filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
+    filter: drop-shadow(0 0 5px rgba(96, 165, 250, 0.3));
 }
 
 .utility-card h3 {
@@ -799,29 +898,34 @@ h2 {
 .contact-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .contact-link {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: rgba(96, 165, 250, 0.8);
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.5rem;
+    background: #1e293b;
     color: white;
     text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    transition: all 0.2s ease;
     font-weight: 500;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    min-width: fit-content;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .contact-link:hover {
-    background: rgba(96, 165, 250, 1);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.6);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.15);
 }
 
 footer {
