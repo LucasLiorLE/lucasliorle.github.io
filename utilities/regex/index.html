@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Regex Tester</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="/index.html" class="close-root" aria-label="Close">×</a>
+    <main class="container">
+        <h1>Regex Tester</h1>
+        <div class="controls">
+            <label>Pattern: <input id="pattern" placeholder="e.g. (test)" autofocus></label>
+            <label>Flags: </label>
+            <div id="flags" class="flags-list" aria-hidden="false">
+                <label class="flag"><input type="checkbox" value="g" class="flag-checkbox"><span>g</span></label>
+                <label class="flag"><input type="checkbox" value="i" class="flag-checkbox"><span>i</span></label>
+                <label class="flag"><input type="checkbox" value="m" class="flag-checkbox"><span>m</span></label>
+                <label class="flag"><input type="checkbox" value="s" class="flag-checkbox"><span>s</span></label>
+                <label class="flag"><input type="checkbox" value="u" class="flag-checkbox"><span>u</span></label>
+                <label class="flag"><input type="checkbox" value="y" class="flag-checkbox"><span>y</span></label>
+            </div>
+            <label style="margin-left:6px">Flavor:
+                <select id="flavor" class="flavor-select" aria-label="Regex flavor">
+                    <option value="js">JavaScript (native)</option>
+                    <option value="pcre">PCRE-like (approx)</option>
+                    <option value="python">Python (approx)</option>
+                    <option value="golang">Go (approx)</option>
+                </select>
+            </label>
+        </div>
+        <div id="flavorNote" class="muted-note" aria-live="polite" style="margin-top:6px;font-size:13px;color:rgba(255,255,255,0.6)"></div>
+
+        <div class="layout">
+            <section class="left">
+                <h3>Input text</h3>
+                <textarea id="inputText" placeholder="Paste text to test against"></textarea>
+                <h4>Replace</h4>
+                <input id="replaceWith" placeholder="Replacement (optional)">
+            </section>
+
+            <section class="right">
+                <h3>Matches</h3>
+                <div id="matches" class="matches"></div>
+                <h3>Highlighted</h3>
+                <div id="highlighted" class="highlighted"></div>
+            </section>
+        </div>
+
+        <pre id="error" class="error" aria-live="polite"></pre>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

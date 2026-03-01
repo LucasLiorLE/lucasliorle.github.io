@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>LaTeX Whiteboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+</head>
+<body>
+
+    <div id="boardContainer">
+        <div id="board"></div>
+    </div>
+
+    <a href="/index.html" class="close-root" aria-label="Close">×</a>
+
+    <div id="boardsSidebar" class="board-sidebar" aria-hidden="true"></div>
+    <div id="settingsPanel" class="settings-panel" aria-hidden="true"></div>
+
+    <button id="settingsBtn" class="fab settings-btn" title="Settings">⚙️</button>
+    <button id="toggleBoardsBtn" class="fab board-toggle-btn" title="Boards">📁</button>
+    <button id="openDesmosBtn" class="fab" title="Open Desmos">∑</button>
+    <script src="script.js"></script>
+</body>
+</html>

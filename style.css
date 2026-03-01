@@ -849,6 +849,39 @@ h3 {
     -webkit-text-fill-color: transparent;
 }
 
+/* specific utility icon colors for LaTeX (5), Regex (6), Markdown (7), JSON (8) */
+.utility-card:nth-child(5) .utility-image i {
+    background: linear-gradient(135deg, #0b79f7, #3b82f6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.utility-card:nth-child(5) .utility-image::before{ background: linear-gradient(135deg, #0b79f7, #3b82f6); }
+
+.utility-card:nth-child(6) .utility-image i {
+    background: linear-gradient(135deg, #ff6a00, #ff8a00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.utility-card:nth-child(6) .utility-image::before{ background: linear-gradient(135deg, #ff6a00, #ff8a00); }
+
+.utility-card:nth-child(7) .utility-image i {
+    background: linear-gradient(135deg, #b65d00, #d97706);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.utility-card:nth-child(7) .utility-image::before{ background: linear-gradient(135deg, #b65d00, #d97706); }
+
+.utility-card:nth-child(8) .utility-image i {
+    background: linear-gradient(135deg, #01796f, #06b6d4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.utility-card:nth-child(8) .utility-image::before{ background: linear-gradient(135deg, #01796f, #06b6d4); }
+
 @media (max-width: 768px) {
     .utilities-grid {
         grid-template-columns: repeat(2, 1fr);

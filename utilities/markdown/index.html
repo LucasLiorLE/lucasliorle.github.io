@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Markdown Preview</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+</head>
+<body>
+    <a href="/index.html" class="close-root" aria-label="Close">×</a>
+    <main class="container">
+        <h1>Markdown Preview</h1>
+        <div class="layout">
+            <section class="left">
+                <h3>Editor</h3>
+                <textarea id="mdInput" placeholder="# Hello\n\nType Markdown here"></textarea>
+            </section>
+            <section class="right">
+                <h3>Preview</h3>
+                <div id="preview" class="preview"></div>
+            </section>
+        </div>
+    </main>
+    <script defer src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JSON Workspace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="/index.html" class="close-root" aria-label="Close">×</a>
+  <main class="container">
+    <h1>JSON Workspace</h1>
+    <div class="toolbar">
+      <button id="formatBtn">Format / Validate</button>
+      <button id="applyBtn">Apply Edits</button>
+      <span id="status" class="status"></span>
+    </div>
+
+    <div class="layout">
+      <section class="editor">
+        <h3>Raw JSON</h3>
+        <textarea id="jsonInput" spellcheck="false">{
+  "test1": {
+    "test2": "hello"
+  }
+}</textarea>
+      </section>
+
+      <section class="workspace">
+        <h3>Workspace</h3>
+        <div id="tree" class="tree"></div>
+        <div id="nodePanel" class="node-panel"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
